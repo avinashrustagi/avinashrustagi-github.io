@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+
+%\pagestyle{empty}
+\textwidth 6.5in
+\textheight 9in
+\oddsidemargin 0in
+\topmargin 0 in
+\headheight 0 in
+\headsep 0in
+%\footheight 0in
+\footskip 0.5in
+\parindent 0 in
+
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{etaremune}
+\usepackage{multicol}
+\usepackage{titlesec}
+\hypersetup{colorlinks=true,linkcolor=blue,anchorcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue}
+
+%\usepackage[letter, total={6.5in, 9in}]{geometry}
+%\usepackage[letterpaper, margin=1in]{geometry}
+
+\titleformat{\section}{\normalsize \bfseries}{\thesection}{0.5 em}{}
+\setlength{\topmargin}{0 cm}
+\titlespacing{\section}{0pt}{1 em}{0.5 em}
+
+\titleformat{\subsection}{\normalsize \bfseries}{\thesection}{0.5 em}{}
+\titlespacing{\subsection}{0pt}{0.5 em}{0.5 em}
+\setlength{\topmargin}{0 cm}
+
+\providecommand*\email[1]{\href{mailto:#1}{#1}}
+
+\begin{document}
+\begin{center}
+{\bf \underline{Curriculum Vitae}}
+\end{center}
+
+ \section*{Avinash Rustagi}
+\newlength{\rcollength}\setlength{\rcollength}{2.13in}
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+Postdoctoral Research Scholar & \email{arustag@ncsu.edu} \\ 
+Department of Physics & \email{rustagi.avinash@gmail.com} \\ 
+North Carolina State University & \\
+Raleigh, NC 27695 & • \\ 
+\end{tabular} 
+
+\renewcommand{\labelitemii}{$\cdot$}
+\section*{\underline{Professional Employment}}
+Fall 2016 - Present: Postdoctoral Research Scholar, Department of Physics, North Carolina State University. Supervisor: \href{https://kemper.wordpress.ncsu.edu} {Prof. Alexander F. Kemper} 
+
+\section*{\underline{Education}}
+\begin{itemize}
+\item{Ph.D. in Physics, \href{http://www.phys.ufl.edu}{ University of Florida} (Spring 2016) - dissertation titled ``Optical and Transport Properties of Zero Gap and Finite Gap Semiconductors'' and supervised by \href{http://www.phys.ufl.edu/~stanton/} {Prof. Christopher J. Stanton}.}
+\item{M.Sc. in Physics, \href{http://www.iitk.ac.in/phy/} {Indian Institute of Technology}, Kanpur, (2010).}
+\item{B.Sc. in Physics, \href{http://www.ststephens.edu} {St. Stephens College}, Delhi, (2008).}
+\end{itemize}
+
+\section*{\underline{Research Interests}}
+\begin{itemize}
+\item Many body theory: Correlations in electron-hole systems, Ultrafast carrier and lattice dynamics, Non-equilibrium Bethe-Salpeter equation.
+\item Electronic structure calculations: Density Functional Theory.
+\item Optical and Transport Properties: Magneto-optics, Semiclassical Transport, Terahertz generation, Coherent Phonons.   
+\end{itemize}
+
+\section*{\underline{Publications}}
+\subsection*{Published}
+\begin{etaremune}
+\itemsep-0.1em
+	\item {\bf Avinash Rustagi}, and Alexander F. Kemper `` Theoretical phase diagram for the room temperature Electron-Hole Liquid in photo-excited quasi-2D monolayer MoS$_2$." \href{http://pubs.acs.org/doi/abs/10.1021/acs.nanolett.7b04377} {\bf Nano Letters 2018 18 (1), 455-459}
+
+	\item Kunie Ishioka, {\bf Avinash Rustagi}, Andreas Beyer, Wolfgang Stolz, Kerstin Volz, Ulrich Hoefer, Hrvoje Petek, and Christopher J. Stanton `` Sub-picosecond acoustic pulses generated at buried GaP/Si interfaces." \href{http://aip.scitation.org/doi/full/10.1063/1.4997913}{\bf  Appl. Phys. Lett. 111, 062105(2017)}
+ 
+	\item Kevin L. Pollock, Hoang Q. Doan, {\bf Avinash Rustagi}, Christopher J. Stanton, and Tanja Cuk ``Detecting the Photoexcited Carrier Distribution Across GaAs/Transition Metal Oxide Interfaces by Coherent Longitudinal Acoustic Phonons."\href{http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.6b02835} {\bf J. Phys. Chem. Lett., 2017, 8, pp 922–928 (2017)}
+
+       \item Kunie Ishioka, {\bf Avinash Rustagi}, Ulrich Hofer, Hrvoje Petek, Christopher J. Stanton  ``Intrinsic coherent acoustic phonons in the indirect band gap semiconductors Si and GaP." \href{http://journals.aps.org/prb/abstract/10.1103/PhysRevB.95.035205} {\bf Phys. Rev. B 95, 035205 (2017)}.
+
+			\item {\bf A. Rustagi} and C. J. Stanton  ``Terahertz radiation from accelerating charge carriers in graphene under ultrafast photoexcitation." \href{https://journals.aps.org/prb/abstract/10.1103/PhysRevB.94.195207} {\bf Phys. Rev. B 94, 195207 (2016)}.
+
+      \item K. Ishioka, K. Brixius, A. Beyer, {\bf A. Rustagi}, C. J. Stanton, W. Stolz, K. Volz, U. Hofer and H. Petek ``Coherent phonon spectroscopy characterization of electronic bands at buried semiconductor heterointerfaces." \href{http://scitation.aip.org/content/aip/journal/apl/108/5/10.1063/1.4941397} {\bf Appl. Phys. Lett. 108, 051607 (2016)}.
+
+     \item K. Ishioka, K. Brixius, U. H{\"o}fer, {\bf A. Rustagi} , E. Thatcher, C. J. Stanton and H. Petek ``Dynamically Coupled Plasmon-Phonon Modes in GaP; an Indirect-Gap, Polar Semiconductor." \href{http://journals.aps.org/prb/abstract/10.1103/PhysRevB.92.205203}{\bf Phys. Rev. B 92, 205203 (2015)}.
+
+     \item {\bf A. Rustagi} and C. J. Stanton  ``Hot-electron noise properties of graphene-like systems." \href{http://journals.aps.org/prb/abstract/10.1103/PhysRevB.90.245424}{\bf Phys. Rev. B 90, 245424 (2014)}.
+
+    \item L. G. Booshehri, C. H. Mielke, D. G. Rickel, S. A. Crooker, Q. Zhang, L. Ren, E. H. Hároz, {\bf A. Rustagi}, C. J. Stanton, Z. Jin, Z. Sun, Z. Yan, J. M. Tour, and J. Kono  ``Circular polarization dependent cyclotron resonance in large-area graphene in ultrahigh magnetic fields." \href{http://journals.aps.org/prb/abstract/10.1103/PhysRevB.85.205407} {\bf Phys. Rev. B 85, 205407 (2012)}.
+
+\end{etaremune}
+
+\subsection*{In preparation}
+\begin{etaremune}
+\itemsep-0.1em
+	\item O. Abdurazakov, {\bf Avinash Rustagi}, J. K. Freericks, and Alexander F. Kemper `` Ultrafast electron and lattice dynamics: Role of excited phonon population" {\bf  In preparation (2017)}
+	
+	\item O. Abdurazakov, {\bf Avinash Rustagi}, J. K. Freericks, and Alexander F. Kemper `` Thermalization of non-equilibrium carriers in 2D Hubbard Holstein model." {\bf  In preparation (2017)}	
+
+\end{etaremune}
+
+
+\section*{\underline{Honors and Awards}}
+\subsection*{Travel Awards}
+\begin{itemize}
+\item $5^{th}$ International Symposium on Terahertz Nanoscience, Martinique, Dec 2014
+\end{itemize}
+
+\subsection*{ Student Awards --- University of Florida, Graduate School}
+\begin{itemize}
+\item College of Liberal Arts and Sciences (CLAS) Dissertation Fellowship funded by Threadgill Scholarship Program, Spring 2016.
+\item Certificate of Outstanding Achievement for Academic Excellence, 2010--2014
+\item Center for Condensed Matter Sciences (CCMS) Summer Fellowship, 2011
+\end{itemize}
+
+\subsection*{Student Awards --- Indian Institute of Technology, Kanpur, India, M.Sc.}
+\begin{itemize}
+\item  General Proficiency Medal for Academic Excellence, 2008--2010
+\item Academic Excellence Award, 2009-2010
+\end{itemize}
+
+\subsection*{Student Awards --- St. Stephens College, Delhi, India, B.Sc.}
+\begin{itemize}
+\item University Gold Medal for First Rank in B.Sc. Physics Examinations, 2005--2008
+\item The Sumitomo Corporation-St. Stephens College Scholarship, 2005-2008
+%\item Ramesh Goel Memorial and Tushar Nagia prizes for best student in 2006-2007 and securing highest marks in examinations.
+\end{itemize}
+
+\section*{\underline{Computational Skills}} 
+  Experience in C++, Python,  MATLAB, FORTRAN, Mathematica, and Shell Script. Experience in parallel programming using MPI and OpenMP. Experience in Quantum Espresso for electronic structure calculations.
+  
+ \section*{\underline{Teaching Experience}}
+ Teaching Assistant {Fall 2010--Spring 2011}, PHY 2053 Lab, Department of Physics, University of Florida.
+ 
+
+\section*{\underline{Conference talks}}
+ \begin{itemize}
+ \itemsep-0.2em
+ \item 84$^\mathrm{th}$ annual meeting of SESAPS 2017, Milledgeville, GA - ``Photoemission signature of excitons" 
+
+\item APS March Meeting 2017, New Orleans, LA - ``Non-Equilibrium exciton dynamics in model systems" 
+ 
+\item APS March Meeting 2016, Baltimore, MD - ``Coupled Plasmon Phonon Dynamics in GaP: an indirect gap polar semiconductor"
+
+ \item $5^\mathrm{th}$ International Symposium on Terahertz Nanoscience 2015, Martinique - ``THz radiation from accelerating photo-excited carriers in graphene"
+
+\item APS March Meeting 2014, Denver, CO  - ``Terahertz radiation from accelerating carriers in graphene"
+
+\item APS March Meeting 2013, Baltimore, MD - ``Noise properties of graphene like systems"
+ \end{itemize}
+ 
+
+ 
+ \section*{\underline{References}}
+ { \bf Prof. Alexander F. Kemper} \\
+ \email{akemper@ncsu.edu}\\
+  Tel: +1-919-515-7339\\
+ Dept. of Physics\\
+ North Carolina State University, Raleigh, NC\\
+ \\
+ %
+ { \bf Prof. Christopher J. Stanton} \\
+ \email{stanton@phys.ufl.edu}\\
+  Tel: +1-352-392-8753\\
+ Dept. of Physics\\
+ University of Florida, Gainesville, FL\\
+ \\
+ %
+ { \bf Prof. Kenan Gundogdu} \\
+\email{kgundog@ncsu.edu}\\
+ Tel: +1-919-513-3409\\
+Dept. of Physics\\
+North Carolina State University, Raleigh, NC\\
+
+\end{document}
