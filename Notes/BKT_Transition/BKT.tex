@@ -1,0 +1,145 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Berezinskii-Kosterlitz-Thouless (BKT)}
+
+\author{Avinash Rustagi}
+\email{arustag@ncsu.edu}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, NC 27695}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+The BKT transition is ubiquitous in 2D systems requiring non-perturbative effects (e.g. topological defects). To put this into context, we first need to understand the Mermin-Wagner-Hohenberg Theorem. \\
+
+Mermin-Wagner-Hohenberg Theorem states that spontaneous symmetry breaking cannot occur in dimensions two or lower. This is due to the divergent fluctuations associated with the Goldstone modes that arise at finite temperatures in dimensions two or lower. Such strong divergent fluctuations do not allow for long range order to exist in d=1 and 2. A main signature of phase transitions is the divergence of correlation length at the phase transition. \\
+
+Inspite of this, BKT have shown that a quasi-long range ordered state can exist in dimension two or lower. This is the point of discussion of this note.
+
+\section{2D XY Model}
+This is a spin-lattice model where the spin is localized to a 2D lattice and is constrained to rotate in the 2D plane. Without loss of generality, we can assume the spin to have unit magnitude. Thus a spin can just be described in terms of its orientation in the plane. ${\bm S}=(\cos\phi, \sin \phi)$, where $\phi$ is the polar angle. The Hamiltonian for such a spin-lattice model is the Heisenberg exchange one with nearest neighbor interaction
+\begin{equation}
+H=-J \sum_{<i,j>} {\bm S}_i \cdot {\bm S}_j =-J \sum_{<i,j>} \left( \cos\phi_i \cos\phi_j + \sin\phi_i \sin\phi_j\right) =-J \sum_{<i,j>} \cos\left( \phi_i - \phi_j \right)
+\end{equation}
+
+\section{Low Temperature Regime}
+In the low temperature regime, the spin orientations are very similar at neighboring sites. Thus we can expand the Hamiltonian
+\begin{equation}
+H \approx E_0 + \dfrac{J}{2} \sum_{<i,j>} \left( \phi_i - \phi_j \right)^2
+\end{equation}
+We can then take the continuum limit $\phi_i - \phi_j  \approx a \nabla \phi$ where $a$ is the lattice spacing. In the continuum limit, the Hamiltonian is
+\begin{equation}
+H \approx \dfrac{J}{2} \int d^2r \, \vert {\bm \nabla} \phi({\bm r})\vert^2
+\end{equation}
+In Fourier space
+\begin{equation}
+\phi({\bm r}) = \int \dfrac{d^2k}{2\pi} e^{i{\bm k}\cdot{\bm r}} \phi({\bm k})
+\end{equation}
+Therefore
+\begin{equation}
+H=\dfrac{J}{2} \int d^2k \, k^2 \phi({\bm k}) \phi(-{\bm k})
+\end{equation}
+Since the field $\phi(\bm r)$ is real, $\phi^*({\bm k})=\phi(-{\bm k})$. The two-point correlation function is defined as
+\begin{equation}
+C({\bm r}-{\bm r}^\prime) = \langle {\bm S}({\bm r})\cdot  {\bm S}({\bm r}^\prime)\rangle = \mathrm{Re} \left[ \langle e^{i \left( \phi({\bm r})-\phi({\bm r}^\prime)\right)}\rangle\right]
+\end{equation}
+The correlation in momentum space can be simply evaluated since the Hamiltonian is quadratic 
+\begin{equation}
+\langle  \phi({\bm k})  \phi({\bm k}^\prime) \rangle = \dfrac{\int \mathcal{D}\phi \,\phi({\bm k})  \phi({\bm k}^\prime) e^{-\beta H} }{\int \mathcal{D}\phi \, e^{-\beta H} } = \dfrac{\delta({\bm k}+{\bm k}^\prime)}{\beta J k^2}
+\end{equation}
+To evaluate the correlation function, we will use an identity for Gaussian Hamiltonians
+\begin{equation}
+\langle e^A \rangle = e^{\langle A \rangle+\langle A^2 \rangle/2}
+\end{equation}
+Since $\langle \left( \phi({\bm r})-\phi({\bm r}^\prime)\right) \rangle =0$,
+\begin{equation}
+C({\bm r}-{\bm r}^\prime) = \mathrm{Re} \left[ \langle e^{i \left( \phi({\bm r})-\phi({\bm r}^\prime)\right)}\rangle\right] = e^{-\langle \left( \phi({\bm r})-\phi({\bm r}^\prime)\right)^2 \rangle/2}
+\end{equation}
+Thus we can evaluate $\langle \left( \phi({\bm r})-\phi({\bm r}^\prime)\right)^2 \rangle$
+\begin{equation}
+\begin{split}
+\langle \left( \phi({\bm r})-\phi({\bm r}^\prime)\right)^2 \rangle &= \iint \dfrac{d^2k \, d^2k^\prime}{(2\pi)^2} \langle\phi({\bm k})  \phi({\bm k}^\prime) \rangle \left[ e^{i({\bm k}+{\bm k}^\prime)\cdot {\bm r}} + e^{i({\bm k}+{\bm k}^\prime)\cdot {\bm r}^\prime} - e^{i({\bm k}\cdot {\bm r}+{\bm k}^\prime\cdot {\bm r}^\prime)}- e^{i({\bm k}\cdot {\bm r}^\prime+{\bm k}^\prime\cdot {\bm r})}\right]\\
+&= \int \dfrac{d^2k }{(2\pi)^2} \dfrac{2}{\beta J k^2}\left[1-\cos\left( {\bm k}\cdot \Delta{\bm r}\right)\right]
+\end{split}
+\end{equation}
+where $\Delta{\bm r} = {\bm r}-{\bm r}^\prime$. The integral in the correlation function can be split into two pieces, 1) $k \lesssim \Delta r^{-1}$ and 2) $k \gtrsim \Delta r^{-1}$.\\
+
+1) $k \lesssim \Delta r^{-1}$: \\
+
+In this case, the argument of the cosine in the integrand is close to 1. Thus we can expand $\left[1-\cos\left( {\bm k}\cdot \Delta{\bm r}\right)\right] = ( {\bm k}\cdot \Delta{\bm r})^2/2$. The integral can be simply evaluated
+\begin{equation}
+\int^{\Delta r^{-1}} \dfrac{d^2k }{(2\pi)^2} \dfrac{2}{\beta J k^2}\left[1-\cos\left( {\bm k}\cdot \Delta{\bm r}\right)\right] =\int^{\Delta r^{-1}} \dfrac{d^2k }{(2\pi)^2} \dfrac{1}{\beta J k^2}( {\bm k}\cdot \Delta{\bm r})^2\approx \mathrm{Constant}
+\end{equation}
+
+2) $k \gtrsim \Delta r^{-1}$: \\
+
+In this case, the argument of the cosine rapidly oscillates and thus will not be a leading contribution. Here we can approximate $\left[1-\cos\left( {\bm k}\cdot \Delta{\bm r}\right)\right] \approx 1$.
+\begin{equation}
+\int_{\Delta r^{-1}} \dfrac{d^2k }{(2\pi)^2} \dfrac{2}{\beta J k^2}\left[1-\cos\left( {\bm k}\cdot \Delta{\bm r}\right)\right] =\int_{\Delta r^{-1}} \dfrac{d^2k }{(2\pi)^2} \dfrac{2}{\beta J k^2} = \dfrac{1}{\beta J}  \int_{\Delta r^{-1}} \dfrac{dk }{(2\pi)} \dfrac{2}{k}
+\end{equation}
+which is clearly logarithmically divergent at high momenta. Here we should note that the upper cut-off on momenta is provided by the lattice $\sim 1/a$. Thus 
+\begin{equation}
+\int_{\Delta r^{-1}} \dfrac{d^2k }{(2\pi)^2} \dfrac{2}{\beta J k^2}\left[1-\cos\left( {\bm k}\cdot \Delta{\bm r}\right)\right]=  \dfrac{1}{\beta J}  \int_{\Delta r^{-1}}^{a^{-1}} \dfrac{dk }{\pi} \dfrac{1}{k} =   \dfrac{1}{\pi \beta J} \log\left( \dfrac{\Delta r}{a}\right)
+\end{equation}
+
+Therefore the correlation function scales as
+\begin{equation}
+C({\bm r}-{\bm r}^\prime) = e^{-\langle \left( \phi({\bm r})-\phi({\bm r}^\prime)\right)^2 \rangle/2} \propto \left( \dfrac{\Delta r}{a}\right)^{-\dfrac{k_B T}{2\pi J}}
+\end{equation}
+This is consistent with the Mermin-Wagner-Hohenberg Theorem since the correlation goes to zero as $\Delta r \rightarrow \infty$ meaning the absence of long range order. However, the decay is fairly slow following a power law thus making it possible for existence of quasi-long range order. The power law is temperature dependent implying that long-range order exists at all temperatures. The resolution arises from the property of the angular field $\phi({\bm r})$ which can give rise to defect pairs (vortex-antivortex) which at large temperatures make a larger contribution to Free energy though the entropy term. Thus with large temperature, the quasi-long range order ceases to exist, thereby reaching a disordered phase at $T>T_c$.
+
+\section{High Temperature Regime}
+Considering the high temperature regime, the partition function is
+\begin{equation}
+Z=\mathrm{Tr} \left[ e^{-\beta H}\right] = \int \dfrac{d\phi_0 ... d\phi_n}{(2\pi)^n} \exp \left[\beta J \sum_{\langle i,j \rangle}\cos \left( \phi_i - \phi_j\right)\right] \approx \int \dfrac{d\phi_0 ... d\phi_n}{(2\pi)^n} \sum_{\langle i,j \rangle}  \left[1+\beta J \cos \left( \phi_i - \phi_j\right)\right]
+\end{equation}
+ The average of $\cos\left( \phi_r - \phi_0\right)$
+\begin{equation}
+\langle \cos\left( \phi_r - \phi_0\right) \rangle = \int \dfrac{d\phi_0 ... d\phi_n}{(2\pi)^n} \cos\left( \phi_r - \phi_0\right) \left[1+\beta J \cos \left( \phi_0 - \phi_1\right)\right] \left[1+\beta J \cos \left( \phi_1 - \phi_2\right)\right] ... \left[1+\beta J \cos \left( \phi_{n-1} - \phi_n\right)\right] 
+\end{equation}
+Using the cosine integration relations
+\begin{equation}
+\begin{split}
+& \int_0^{2\pi} \dfrac{d\phi_i}{2\pi} \cos\left( \phi_i-\phi_j \right) =0 \\
+& \int_0^{2\pi} \dfrac{d\phi_i}{2\pi}\int_0^{2\pi} \dfrac{d\phi_j}{2\pi} \cos\left( \phi_i-\phi_j \right)\cos\left( \phi_i-\phi_j \right) =\dfrac{1}{2} \\
+& \int_0^{2\pi} \dfrac{d\phi_j}{2\pi} \cos\left( \phi_i-\phi_j \right) \cos\left( \phi_j-\phi_k \right) =\dfrac{1}{2}\cos\left( \phi_i-\phi_k \right)  \\
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\langle \cos\left( \phi_r - \phi_0\right) \rangle &= \int \dfrac{d\phi_0 ... d\phi_n}{(2\pi)^n} \cos\left( \phi_r - \phi_0\right) \left[1+\beta J \cos \left( \phi_0 - \phi_1\right)\right] \left[1+\beta J \cos \left( \phi_1 - \phi_2\right)\right] ... \left[1+\beta J \cos \left( \phi_{n-1} - \phi_n\right)\right] \\
+&= \int \dfrac{d\phi_0 ... d\phi_r}{(2\pi)^r} \cos\left( \phi_r - \phi_0\right) \left[\beta J \cos \left( \phi_0 - \phi_1\right)\right] \left[ \beta J \cos \left( \phi_1 - \phi_2\right)\right] ... \left[\beta J \cos \left( \phi_{r-1} - \phi_r\right)\right] \\
+&= (\beta J)^r \left(\dfrac{1}{2}\right)^{r-1} \int \dfrac{d\phi_0 d\phi_r}{(2\pi)^2} \cos\left( \phi_r - \phi_0\right) \cos\left( \phi_0 - \phi_r\right)\\
+&=\left(\dfrac{\beta J}{2}\right)^{r}
+\end{split}
+\end{equation}
+Therefore
+\begin{equation}
+\langle {\bm S}_r \cdot  {\bm S}_0 \rangle \propto \left(\dfrac{\beta J}{2}\right)^{r} \sim e^{-r/\xi}
+\end{equation}
+where correlation length $\xi=1/\log(2k_B T/J)$. This displays the exponential decay of correlation length which is expected for high temperatures when the phase is disordered.
+
+\end{document}

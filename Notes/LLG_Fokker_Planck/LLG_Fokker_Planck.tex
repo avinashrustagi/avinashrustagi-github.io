@@ -1,0 +1,267 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+\newcommand{\cgr}{C^{>}_{AB}}
+\newcommand{\clr}{C^{<}_{AB}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Landau-Lifshitz-Gilbert - Fokker-Planck Equation}
+
+\author{Avinash Rustagi}
+\email{arustag@purdue.edu}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+%
+Landau-Lifshitz-Gilbert equation (equivalent to the Landau-Lifshitz equation with renormalized parameters) governs the magnetization dynamics in an effective magnetic field $\vec{B}$ determined by the free energy landscape. It is simple to generalize it to include a fluctuating field $\vec{b}(t)$.
+\begin{equation}
+\begin{split}
+\dfrac{d\vec{M}}{dt} &= -\gamma_G \vec{M} \times (\vec{B}+\vec{b}(t)) +\dfrac{\alpha }{M_s} \vec{M} \times \dfrac{d\vec{M}}{dt} \\
+&= -\gamma_G \vec{M} \times (\vec{B}+\vec{b}(t)) +\dfrac{\alpha }{M_s} \vec{M} \times \left[ -\gamma_G \vec{M} \times (\vec{B}+\vec{b}(t)) +\dfrac{\alpha }{M_s} \vec{M} \times \dfrac{d\vec{M}}{dt}\right] \\
+&= -\gamma_G \vec{M} \times (\vec{B}+\vec{b}(t)) -\gamma_G \dfrac{\alpha }{M_s} \vec{M} \times \vec{M} \times (\vec{B}+\vec{b}(t)) +\dfrac{\alpha^2 }{M_s^2} \vec{M} \times \vec{M} \times \dfrac{d\vec{M}}{dt} \\
+&= -\gamma_G \vec{M} \times (\vec{B}+\vec{b}(t)) -\gamma_G \dfrac{\alpha }{M_s} \vec{M} \times \vec{M} \times (\vec{B}+\vec{b}(t)) -\alpha^2 \dfrac{d\vec{M}}{dt} \\
+&= -\dfrac{\gamma_G}{1+\alpha^2} \vec{M} \times (\vec{B}+\vec{b}(t)) - \dfrac{\alpha \gamma_G }{M_s (1+\alpha^2)} \vec{M} \times \vec{M} \times (\vec{B}+\vec{b}(t)) \\
+\end{split}
+\end{equation}
+Defining $\gamma = \gamma_G /(1+\alpha^2)$:
+\begin{equation}
+\dfrac{d\vec{M}}{dt} = -\gamma \vec{M} \times (\vec{B}+\vec{b}(t)) -\dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times (\vec{B}+\vec{b}(t))
+\end{equation}
+where the fluctuating field $\vec{b}(t)$ is a Gaussian stochastic variable
+\begin{equation}
+\langle b_i(t) \rangle = 0 \qquad \langle b_i(t_1) b_j(t_2) \rangle = 2 D \delta_{ij} \delta(t_1-t_2)
+\end{equation}
+Assuming that damping is weak, we can drop the fluctuating field from the second term in the LLG equation
+\begin{equation}
+\dfrac{d\vec{M}}{dt} = -\gamma \vec{M} \times (\vec{B}+\vec{b}(t)) -\dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times \vec{B}
+\end{equation}
+Considering the Fokker-Planck equation for the probability density of having magnetization $\vec{M}$ at time $t$ for a given realization of stochastic field is
+\begin{equation}
+\begin{split}
+\dfrac{\partial}{\partial t}  \rho(\vec{M},t) &= - \dfrac{\partial}{\partial \vec{M}} \cdot [\dot{\vec{M}} \rho(\vec{M},t)] \\
+ &= - \dfrac{\partial}{\partial \vec{M}} \cdot \left[\left(-\gamma \vec{M} \times (\vec{B}+\vec{b}(t)) -\dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times \vec{B}\right) \rho(\vec{M},t) \right]  \\
+ &=  \dfrac{\partial}{\partial \vec{M}} \cdot \left[\left(\gamma \vec{M} \times \vec{B} +\dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times \vec{B}\right) \rho(\vec{M},t) \right] +  \dfrac{\partial}{\partial \vec{M}} \cdot \left[\gamma \vec{M} \times \vec{b}(t)\rho(\vec{M},t) \right]\\
+ &=  \partial_{M_i} \left[\left(\gamma \epsilon_{ijk}M_j B_k +\dfrac{\alpha \gamma}{M_s} \epsilon_{ijk}M_j \epsilon_{kpq}M_p B_q \right) \rho(\vec{M},t) \right] +  \partial_{M_i} \left[\gamma \epsilon_{ijk} M_j b_k(t) \rho(\vec{M},t) \right]\\
+ &=  \left[\gamma \epsilon_{ijk}M_j B_k \partial_{M_i} +\dfrac{\alpha \gamma}{M_s} \epsilon_{ijk} \epsilon_{kpq} M_j \partial_{M_i} M_p B_q \right]  \rho(\vec{M},t) +   \left[\gamma \epsilon_{ijk} M_j b_k(t) \partial_{M_i}\right] \rho(\vec{M},t) \\
+ &= -L_0  \rho(\vec{M},t) - L_1  \rho(\vec{M},t)
+\end{split}
+\end{equation}
+where the operators $L_0$ and $L_1$ are 
+\begin{equation}
+\begin{split}
+L_0 &= -\left[\gamma \epsilon_{ijk}M_j B_k \partial_{M_i} +\dfrac{\alpha \gamma}{M_s} \epsilon_{ijk} \epsilon_{kpq} M_j \partial_{M_i} M_p B_q \right] \\
+L_1 &=-\left[\gamma \epsilon_{ijk} M_j b_k(t) \partial_{M_i}\right]\\
+\end{split}
+\end{equation}
+To get to the observable probability density, we need to average over the various realizations of the random force $\xi(t)$
+\begin{equation}
+P(\vec{M},t) = \langle \rho(\vec{M},t)\rangle_b
+\end{equation}
+To evaluate this average, define
+\begin{equation}
+\rho(\vec{M},t) = e^{-L_0 t} \sigma(\vec{M},t)
+\end{equation}
+which implies
+\begin{equation}
+\dfrac{\partial}{\partial t}  \sigma(\vec{M},t) = - e^{L_0 t} L_1 e^{-L_0 t} \sigma(\vec{M},t) \equiv - V(t) \sigma(\vec{M},t)
+\end{equation}
+The formal solution to this equation is 
+\begin{equation}
+\sigma(\vec{M},t) = \exp\left[-\int_0^t dt_1 \, V(t_1) \right] \sigma(\vec{M},t=0)
+\end{equation}
+Averaging over the random force realizations
+\begin{equation}
+\langle \sigma(\vec{M},t) \rangle_\xi = \langle \exp\left[-\int_0^t dt_1 \, V(t_1) \right] \rangle_b  \sigma(\vec{M},t=0)
+\end{equation}
+which upon using the cumulant expansion relation 
+\begin{equation}
+\langle e^{-i \Phi(t)} \rangle = \exp \left[ \sum_{n=1}^{\infty} \dfrac{(-i )^n}{n!} c_n \right]
+\end{equation}
+gives (assuming that the random force is Gaussian implying that only second cumulant is non-zero equivalent to stating that only even moments are non-zero)
+\begin{equation}
+\langle \sigma(\vec{M},t) \rangle_b = \exp\left[\dfrac{1}{2}\int_0^t dt_1 \, \int_0^t dt_2 \, \langle V(t_1) V(t_2)\rangle_b \right]   \sigma(\vec{M},t=0)
+\end{equation}
+Thus we evaluate the average in the exponential
+\begin{equation}
+\begin{split}
+\dfrac{1}{2}\int_0^t dt_1 \, \int_0^t dt_2 \, \langle V(t_1) V(t_2)\rangle_b &= \dfrac{1}{2}\int_0^t dt_1 \, \int_0^t dt_2 \, \langle e^{L_0 t_1}  \gamma \epsilon_{ijk} M_j b_k(t_1) \partial_{M_i} e^{-L_0 t_1} e^{L_0 t_2} \gamma \epsilon_{pqr} M_q b_r(t_2) \partial_{M_p} e^{-L_0 t_2}\rangle_b \\
+&= \dfrac{1}{2}\int_0^t dt_1 \, \int_0^t dt_2 \, \gamma^2 \langle b_k(t_1) b_r(t_2) \rangle_b e^{L_0 t_1}   \epsilon_{ijk} M_j  \partial_{M_i} e^{-L_0 t_1} e^{L_0 t_2} \epsilon_{pqr}  M_q \partial_{M_p} e^{-L_0 t_2} \\
+&= \dfrac{1}{2}\int_0^t dt_1 \, \int_0^t dt_2 \, \gamma^2 2 D \delta_{kr} \delta(t_1-t_2) e^{L_0 t_1}   \epsilon_{ijk} M_j  \partial_{M_i} e^{-L_0 t_1} e^{L_0 t_2}  \epsilon_{pqr}  M_q \partial_{M_p} e^{-L_0 t_2} \\
+&= D \gamma^2 \int_0^t dt_1 \, e^{L_0 t_1}   \epsilon_{ijk} M_j  \partial_{M_i} \epsilon_{pqk}  M_q \partial_{M_p} e^{-L_0 t_1} \\
+\end{split}
+\end{equation}
+where we have used the Gaussian nature of the random field i.e. $\langle b_k(t_1) b_r(t_2) \rangle = 2 D \delta_{kr} \delta(t_1-t_2)$. Thus
+\begin{equation}
+\langle \sigma(\vec{M},t) \rangle_b = \exp\left[D \gamma^2 \int_0^t dt_1 \, e^{L_0 t_1}   \epsilon_{ijk} M_j  \partial_{M_i} \epsilon_{pqk}  M_q \partial_{M_p} e^{-L_0 t_1} \right]   \sigma(\vec{M},0)
+\end{equation}
+Taking the time-derivative of the above equation
+\begin{equation}
+\dfrac{\partial}{\partial t}\langle \sigma(\vec{M},t) \rangle_b = D \gamma^2 e^{L_0 t}  \epsilon_{ijk} M_j  \partial_{M_i} \epsilon_{pqk}  M_q \partial_{M_p} e^{-L_0 t}  \langle \sigma(\vec{M},t) \rangle_b
+\end{equation}
+which translates to
+\begin{equation}
+\dfrac{\partial}{\partial t}\langle \rho(\vec{M},t) \rangle_b = -L_0 \langle \rho(\vec{M},t) \rangle_b +D \gamma^2  \epsilon_{ijk} M_j  \partial_{M_i} \epsilon_{pqk}  M_q \partial_{M_p} \langle \rho(\vec{M},t) \rangle_b
+\end{equation}
+which is the Fokker-Planck equation in terms of the macroscopic probability density
+\begin{equation}
+\dfrac{\partial}{\partial t} P(\vec{M},t) = -L_0 P(\vec{M},t)  +D \gamma^2  \epsilon_{ijk} M_j  \partial_{M_i} \epsilon_{pqk}  M_q \partial_{M_p} P(\vec{M},t) 
+\end{equation}
+which can be simplified as
+\begin{equation}
+\epsilon_{ijk} M_j  \partial_{M_i} \epsilon_{pqk}  M_q \partial_{M_p} =  \partial_{M_i} \epsilon_{ijk} M_j   \epsilon_{kpq}  M_q \partial_{M_p} =  -\partial_{M_i} \epsilon_{ijk} M_j   \epsilon_{kqp}  M_q \partial_{M_p} \equiv -\dfrac{\partial}{\partial \vec{M}} \cdot \left[\vec{M} \times \vec{M} \times \dfrac{\partial}{\partial \vec{M}}   \right]
+\end{equation}
+and 
+\begin{equation}
+\begin{split}
+- L_0 P(\vec{M},t)  &=\dfrac{\partial}{\partial \vec{M}} \cdot \left[\left(\gamma \vec{M} \times \vec{B} +\dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times \vec{B}\right) P(\vec{M},t) \right]  \\
+\end{split}
+\end{equation}
+Therefore, the final form of the Fokker Planck equation is
+\begin{equation}
+\begin{split}
+\dfrac{\partial}{\partial t} P(\vec{M},t) &= \dfrac{\partial}{\partial \vec{M}} \cdot \left[\left(\gamma \vec{M} \times \vec{B} +\dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times \vec{B}\right) P(\vec{M},t) \right]  - D \gamma^2 \dfrac{\partial}{\partial \vec{M}} \cdot \left[\left(\vec{M} \times \vec{M} \times \dfrac{\partial}{\partial \vec{M}} \right) P(\vec{M},t)  \right] \\
+ &= \dfrac{\partial}{\partial \vec{M}} \cdot \left[\left(\gamma \vec{M} \times \vec{B} +\dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times \vec{B}\right) P(\vec{M},t) - D \gamma^2 \left(\vec{M} \times \vec{M} \times \dfrac{\partial}{\partial \vec{M}} \right) P(\vec{M},t) \right]  
+ \end{split}
+\end{equation}
+%
+\subsection*{Thermal Equilibrium}
+In absence of an external force and in thermal equilibrium ($\partial_t P = 0$), the probability distribution is given by the Boltzmann factor
+\begin{equation}
+P_0 \propto e^{-\beta \mathcal{H}} \Rightarrow \dfrac{\partial}{\partial \vec{M}} P_0 = \beta \vec{B} P_0
+\end{equation}
+where $\mathcal{H}$ is the free energy and thus the effective field is 
+\begin{equation}
+\vec{B} = - \dfrac{\partial \mathcal{H}}{\partial \vec{M}}
+\end{equation}
+This means that the quantity $\gamma (\vec{M} \times \vec{B}) P_0(\vec{M})$ is divergence-less i.e.
+\begin{equation}
+\begin{split}
+\dfrac{\partial}{\partial \vec{M}} \cdot\left[ (\vec{M} \times \vec{B}) P_0(\vec{M}) \right] &=  \left[ \dfrac{\partial}{\partial \vec{M}} \cdot(\vec{M} \times \vec{B}) \right] P_0(\vec{M}) + (\vec{M} \times \vec{B}) \cdot \dfrac{\partial}{\partial \vec{M}} P_0 (\vec{M}) \\
+&=  \left[ \dfrac{\partial}{\partial \vec{M}} \cdot(\vec{M} \times \vec{B}) \right] P_0(\vec{M}) + \beta (\vec{M} \times \vec{B}) \cdot  \vec{B} P_0 \\
+&=0
+\end{split}
+\end{equation}
+Hence, from the Fokker-Planck equation
+\begin{equation}
+\begin{split}
+0 &= \dfrac{\partial}{\partial \vec{M}} \cdot \left[\left( \dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times \vec{B}\right) P_0(\vec{M}) - D \gamma^2 \left(\vec{M} \times \vec{M} \times \dfrac{\partial}{\partial \vec{M}} \right) P_0(\vec{M}) \right]  \\
+&= \dfrac{\partial}{\partial \vec{M}} \cdot \left[\left( \dfrac{\alpha \gamma}{M_s} \vec{M} \times \vec{M} \times \vec{B}\right) P_0(\vec{M}) - \beta D \gamma^2 \left(\vec{M} \times \vec{M} \times \vec{B} \right) P_0(\vec{M}) \right]  
+ \end{split}
+\end{equation}
+which implies 
+\begin{equation}
+D=\dfrac{\alpha k_B T }{\gamma M_s}
+\end{equation}
+Thus
+\begin{equation}
+\langle b_i(t_1) b_j(t_2) \rangle = \dfrac{2 \alpha k_B T }{\gamma M_s} \delta_{ij} \delta(t_1-t_2)
+\end{equation}
+\subsection*{Diffusion Timescale}
+To consider the timescale corresponding to pure diffusion, we can set the external effective field to zero $\vec{B}=0$. Therefore, the Fokker Planck equation takes the simplified form
+\begin{equation}
+\begin{split}
+\dfrac{\partial}{\partial t} P(\vec{M},t) &= - D \gamma^2 \dfrac{\partial}{\partial \vec{M}} \cdot \left[\left(\vec{M} \times \vec{M} \times \dfrac{\partial}{\partial \vec{M}} \right) P(\vec{M},t) \right]  
+ \end{split}
+\end{equation}
+It is clear that the only timescale in this pure diffusion process happens to be
+\begin{equation}
+t_D^{-1} = D \gamma^2 = \dfrac{\alpha k_B T }{\gamma M_s} \gamma^2 = \dfrac{\alpha \gamma k_B T }{ M_s}  = \dfrac{\alpha \gamma_G k_B T }{ M_s (1+\alpha^2)} 
+\end{equation}
+\section*{Mathematical Relations}
+\subsection*{Moments and Characteristic Function}
+Probability distribution functions (PDF) are normalized:
+\begin{equation}
+\int_{-\infty}^{\infty} dx \, P(x) = 1
+\end{equation}
+which implies that the Fourier component of PDF at $k=0$ is unity. The Fourier transform of the PDF can be defined as
+\begin{equation}
+P(k) = \int_{-\infty}^{\infty} dx \, e^{-ikx} \, P(x) 
+\end{equation} 
+and from the normalization condition $P(k=0)=1$. The function $P(k)$ is referred to as the ``Characteristic Function". The moments of the PDF can be thereby expressed in terms of the derivatives of the Characteristic Function.
+\begin{equation}
+\begin{split}
+m_1 &= \langle x \rangle = \int_{-\infty}^{\infty} dx \, x \, P(x) = i \dfrac{\partial P(k)}{\partial k} \bigg\vert_{k=0} \\
+m_2 &= \langle x^2 \rangle = \int_{-\infty}^{\infty} dx \, x^2 \, P(x) = i^2 \dfrac{\partial^2 P(k)}{\partial k^2} \bigg\vert_{k=0} \\
+\vdots \\
+m_n &= \langle x^n \rangle = \int_{-\infty}^{\infty} dx \, x^n \, P(x) = i^n \dfrac{\partial^n P(k)}{\partial k^n} \bigg\vert_{k=0} \\
+\end{split}
+\end{equation}
+Therefore
+\begin{equation}
+P(k) = \sum_{n=0}^{\infty} \dfrac{(-i k)^n}{n!} m_n
+\end{equation}
+
+\subsection*{Cumulants and Cumulant Generating Function}
+From the relation between the PDF and the characteristic function
+\begin{equation}
+P(x) = \int_{-\infty}^{\infty} \dfrac{dk}{2\pi} \, e^{ikx} \, P(k) 
+\end{equation} 
+a ``Cumulant Generating Function" $\psi(k)$ is defined as 
+\begin{equation}
+P(x) = \int_{-\infty}^{\infty} \dfrac{dk}{2\pi} \, e^{ikx} \, e^{\psi(k)}
+\end{equation} 
+where $\psi(k) = \mrm{Log}[P(k)]$ is the function whose Taylor series coefficients at the origin $k=0$ are the ``Cumulants".
+\begin{equation}
+c_n = \dfrac{1}{i^n} \dfrac{\partial^n \psi(k)}{\partial k^n} \bigg\vert_{k=0} 
+\end{equation}
+Therefore
+\begin{equation}
+\begin{split}
+\psi(k) &= -i k c_1 -\dfrac{1}{2!} k^2 c_2 .... \\
+&= \sum_{n=1}^{\infty} \dfrac{(-i k)^n}{n!} c_n
+\end{split}
+\end{equation}
+Comparing to the Characteristic function expansion in terms of moments
+\begin{equation}
+\psi(k) =  \sum_{n=1}^{\infty} \dfrac{(-i k)^n}{n!} c_n = \mrm{Log} \left[  \sum_{n=0}^{\infty} \dfrac{(-i k)^n}{n!} m_n \right]
+\end{equation}
+implies
+\begin{itemize}
+\item $c_1 = m_1$ which is the ``Mean"
+\item $c_2 = m_2 - m_1^2 = \sigma^2$ which is the ``Variance" [$\sigma$: Standard Deviation]
+\item $c_3 = m_3 -3 m_1 m_2 +2 m_1^3$ which is the ``Skewness"
+\item $c_4 = m_4 -3 m_2^2 -4 m_1 m_3 + 12 m_1^2 m_2 -6 m_1^4$ which is the ``Kurtosis"
+\end{itemize}
+Therefore
+\begin{equation}
+\begin{split}
+P(k) = \exp \left[ \sum_{n=1}^{\infty} \dfrac{(-i k)^n}{n!} c_n \right] = \sum_{n=0}^{\infty} \dfrac{(-i k)^n}{n!} m_n 
+\end{split}
+\end{equation}
+which implies
+\begin{equation}
+\begin{split}
+P(k=1) = \exp \left[ \sum_{n=1}^{\infty} \dfrac{(-i )^n}{n!} c_n \right] = \sum_{n=0}^{\infty} \dfrac{(-i )^n}{n!} m_n 
+\end{split}
+\end{equation}
+Consider the following average
+\begin{equation}
+\begin{split}
+\langle e^{-i \Phi(t)} \rangle &= \langle \sum_{n=0}^{\infty} \dfrac{(-i )^n}{n!} \Phi(t)^n \rangle \\
+&=  \sum_{n=0}^{\infty} \dfrac{(-i )^n}{n!}  \langle\Phi(t)^n \rangle \\
+&=  \sum_{n=0}^{\infty} \dfrac{(-i )^n}{n!} m_n \\
+&= \exp \left[ \sum_{n=1}^{\infty} \dfrac{(-i )^n}{n!} c_n \right]
+\end{split}
+\end{equation}
+\end{document}

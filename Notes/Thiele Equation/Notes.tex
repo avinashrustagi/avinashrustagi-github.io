@@ -1,0 +1,158 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,xcolor}
+\fboxrule=1pt
+\usepackage{amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{fit}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\AR}[1]{\textcolor{red}{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Thiele Formalism: Dynamics of spin textures}
+
+\author{Avinash Rustagi}
+\email{arustag@purdue.edu}
+%
+%\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+%
+\noindent \textcolor{blue}{Reference: Phys. Rev. Lett. 30, 230 (1973)}
+\vspace{0.2in}
+
+\noindent The magnetization texture in a thin nanomagnet can be written as
+\begin{equation}
+\vec{m}(\vec{r},t) = \vec{m}(\vec{r}-\vec{R}(t))
+\end{equation}
+where $\vec{r}$ is in the plane normal to the thin film normal. Starting with the ansatz that the magnetization texture moves as a whole without changes in the texture allows us to write 
+\begin{equation}
+\dot{\vec{m}} = - (\dot{\vec{R}}\cdot \vec{\nabla}) \vec{m}
+\end{equation}
+The magnetization dynamics is governed by the LLG equation (that includes both the torque due to effective fields as derived from the free energy and external torques with origin via spin-orbit and spin-transfer mechanisms)
+\begin{equation}
+\dot{\vec{m}} = -\gamma \, \vec{m} \times \vec{H}_\mrm{eff} + \alpha \, \vec{m} \times \dot{\vec{m}} + \vec{T}
+\end{equation}
+which is equivalent to
+\begin{equation}
+\vec{m} \times \dot{\vec{m}} = -\gamma \, (\vec{m} \cdot \vec{H}_\mrm{eff}) \vec{m} + \gamma \vec{H}_\mrm{eff} - \alpha \, \dot{\vec{m}} + \vec{m} \times \vec{T}
+\end{equation}
+Since
+\begin{equation}
+\vec{m} \cdot \dot{\vec{m}}= 0 \Rightarrow - \dot{R}_j \vec{m} \cdot \partial_j \vec{m} = 0
+\end{equation}
+and since $\dot{R}_j \neq 0$, $\vec{m} \cdot \partial_j \vec{m} = 0$.\\
+
+Upon substitution of the Thiele ansatz into the LLG
+\begin{equation}
+-\vec{m} \times (\dot{\vec{R}}\cdot \vec{\nabla}) \vec{m} = -\gamma \, (\vec{m} \cdot \vec{H}_\mrm{eff}) \vec{m} + \gamma \vec{H}_\mrm{eff} + \alpha \, (\dot{\vec{R}}\cdot \vec{\nabla})\vec{m} + \vec{m} \times \vec{T}
+\end{equation}
+which is equivalent to
+\begin{equation}
+-\dot{R}_i \, \vec{m} \times \partial_i \vec{m} = -\gamma \, (\vec{m} \cdot \vec{H}_\mrm{eff}) \vec{m} + \gamma \vec{H}_\mrm{eff} + \alpha \, \dot{R}_i \, \partial_i \vec{m} + \vec{m} \times \vec{T}
+\end{equation}
+where repeated indices are summed over. Taking dot product with $\partial_x \vec{m}$ and $\partial_y \vec{m}$, we get the two equations for the magnetization texture location in the thin magnet,
+\begin{equation}
+\begin{split}
+-\dot{R}_y \, (\vec{m} \times \partial_y \vec{m}) \cdot \partial_x \vec{m} &= \gamma \vec{H}_\mrm{eff} \cdot \partial_x \vec{m} + \alpha \, \dot{R}_i \, \partial_i \vec{m} \cdot \partial_x \vec{m} + (\vec{m} \times \vec{T}) \cdot \partial_x \vec{m}\\
+-\dot{R}_x \, (\vec{m} \times \partial_x \vec{m}) \cdot \partial_y \vec{m} &= \gamma \vec{H}_\mrm{eff} \cdot \partial_y \vec{m} + \alpha \, \dot{R}_i \, \partial_i \vec{m} \cdot \partial_y \vec{m} + (\vec{m} \times \vec{T}) \cdot \partial_y \vec{m}
+\end{split}
+\end{equation}
+Since $(\vec{m} \times \partial_y \vec{m}) \cdot \partial_x \vec{m} = - (\partial_x \vec{m} \times \partial_y \vec{m}) \cdot  \vec{m}$ and $(\vec{m} \times \partial_x \vec{m}) \cdot \partial_y \vec{m} =  (\partial_x \vec{m} \times \partial_y \vec{m}) \cdot  \vec{m}$,
+\begin{equation}
+\begin{split}
+\dot{R}_y \, (\partial_x \vec{m} \times \partial_y \vec{m}) \cdot  \vec{m} &= \gamma \vec{H}_\mrm{eff} \cdot \partial_x \vec{m} + \alpha \, \dot{R}_i \, \partial_i \vec{m} \cdot \partial_x \vec{m} + (\vec{m} \times \vec{T}) \cdot \partial_x \vec{m}\\
+-\dot{R}_x \, (\partial_x \vec{m} \times \partial_y \vec{m}) \cdot  \vec{m} &= \gamma \vec{H}_\mrm{eff} \cdot \partial_y \vec{m} + \alpha \, \dot{R}_i \, \partial_i \vec{m} \cdot \partial_y \vec{m} + (\vec{m} \times \vec{T}) \cdot \partial_y \vec{m}
+\end{split}
+\end{equation}
+Integrating over the spatial dimension ($L\int d\vec{r}$) and analyzing terms one at a time. 
+\begin{equation}
+\begin{split}
+\dot{R}_y L\int d\vec{r}\,(\partial_x \vec{m} \times \partial_y \vec{m}) \cdot  \vec{m} &= \gamma L\int d\vec{r}\,\vec{H}_\mrm{eff} \cdot \partial_x \vec{m} + \alpha \, \dot{R}_i L\int d\vec{r}\, \partial_i \vec{m} \cdot \partial_x \vec{m} + L\int d\vec{r}\, (\vec{m} \times \vec{T}) \cdot \partial_x \vec{m}\\
+-\dot{R}_x L\int d\vec{r}\, (\partial_x \vec{m} \times \partial_y \vec{m}) \cdot  \vec{m} &= \gamma L\int d\vec{r}\,\vec{H}_\mrm{eff} \cdot \partial_y \vec{m} + \alpha \, \dot{R}_i L\int d\vec{r}\, \partial_i \vec{m} \cdot \partial_y \vec{m} + L\int d\vec{r}\, (\vec{m} \times \vec{T}) \cdot \partial_x \vec{m}
+\end{split}
+\end{equation}
+For the first term on the right hand side, let us consider the force experienced by the magnetic texture
+\begin{equation}
+\begin{split}
+F_j &= - \dfrac{dE}{dR_j} = \dfrac{d}{dR_j} M_s L \int d\vec{r} \, \vec{H}_\mrm{eff} \cdot \vec{m}(\vec{r}-\vec{R}) \\
+&=  M_s L \int d\vec{r} \, \vec{H}_\mrm{eff} \cdot \dfrac{d \vec{m}}{dR_j} \\
+&= - M_s L \int d\vec{r} \, \vec{H}_\mrm{eff} \cdot \dfrac{d \vec{m}}{dr_j} \equiv - M_s L \int d\vec{r} \, \vec{H}_\mrm{eff} \cdot \partial_j \vec{m}\\
+\end{split}
+\end{equation}
+\begin{widetext}
+\begin{equation}
+\begin{split}
+\dot{R}_y \dfrac{M_s L}{\gamma}\int d\vec{r}\,(\partial_x \vec{m} \times \partial_y \vec{m}) \cdot  \vec{m} &= -F_x + \alpha \dfrac{M_s L}{\gamma} \int d\vec{r}\, \partial_x \vec{m} \cdot \partial_i \vec{m} \,\, \dot{R}_i  - F_{T,x}\\
+-\dot{R}_x \dfrac{M_s L}{\gamma}\int d\vec{r}\, (\partial_x \vec{m} \times \partial_y \vec{m}) \cdot  \vec{m} &= -F_y + \alpha \dfrac{M_s L}{\gamma} \int d\vec{r}\, \partial_y \vec{m} \cdot \partial_i \vec{m} \,\, \dot{R}_i  - F_{T,x}\\
+\end{split}
+\end{equation}
+\end{widetext}
+where
+\begin{equation}
+F_{T,i} = -\dfrac{M_s L}{\gamma} \int d\vec{r}\, (\vec{m} \times \vec{T}) \cdot \partial_i \vec{m}
+\end{equation}
+is the force originating from the additional torque. Using the definition for topological charge
+\begin{equation}
+Q = \dfrac{1}{4\pi} \int d\vec{r}\,(\partial_x \vec{m} \times \partial_y \vec{m})
+\end{equation}
+we can define the Gyrotropic vector
+\begin{equation}
+\vec{G} = \hat{z} \, \dfrac{4\pi M_s L}{\gamma} Q = G_z \, \hat{z}
+\end{equation}
+and defining the dissipation tensor elements as
+\begin{equation}
+D_{pq} = \alpha \dfrac{M_s L}{\gamma} \int d\vec{r}\, \partial_p \vec{m} \cdot \partial_q \vec{m}
+\end{equation}
+With these definitions, the equation of motion for the Skyrmion center is
+\begin{equation}
+\begin{split}
+\dot{R}_y G_z &= -F_x + D_{xi}\, \dot{R}_i  - F_{T,x}\\
+-\dot{R}_x G_z &= -F_y + D_{yi}\, \dot{R}_i - F_{T,y} \\
+\end{split}
+\end{equation}
+Therefore in vectorial form, the equation of motion is
+\begin{equation}
+\dot{\vec{R}} \times \vec{G} = -\vec{F} + \bar{\bar{D}} \, \dot{\vec{R}} -  \vec{F}_{T} \quad \Rightarrow \quad \vec{G} \times \dot{\vec{R}} + \bar{\bar{D}} \, \dot{\vec{R}} = \vec{F} + \vec{F}_{T} 
+\end{equation}
+where $\bar{\bar{D}}$ is the dissipation tensor with elements given by $D_{pq}$.
+
+
+As an example, let us now consider the damping like spin-orbit torque due to spin accumulation caused by a charge current flowing through a high spin-orbit material. The torque is
+\begin{equation}
+\vec{T} = -\gamma \vec{m} \times \vec{H}_\mrm{DL} = -\dfrac{\gamma \hbar}{2 e M_s L} \Theta_\mrm{SH} J_c \, \vec{m} \times (\vec{m} \times \vec{\sigma})
+\end{equation}
+where $\vec{\sigma} = \hat{J}_c \times \hat{n}$ is the polarization of accumulated spins ($\hat{n}$ is the normal to interface). Thus,
+\begin{equation}
+\vec{m} \times \vec{T} = -\gamma \vec{m} \times \vec{H}_\mrm{DL} = -\dfrac{\gamma \hbar}{2 e M_s L} \Theta_\mrm{SH} J_c \, \vec{m} \times [\vec{m} \times (\vec{m} \times \vec{\sigma})] = -\gamma \vec{m} \times \vec{H}_\mrm{DL} =\dfrac{\gamma \hbar}{2 e M_s L} \Theta_\mrm{SH} J_c \,  (\vec{m} \times \vec{\sigma})
+\end{equation}
+Hence, the force term due to this torque is
+\begin{equation}
+\begin{split}
+F_{T,i} &= -\dfrac{M_s L}{\gamma} \int d\vec{r}\, (\vec{m} \times \vec{T}) \cdot \partial_i \vec{m} \\
+&= -\dfrac{M_s L}{\gamma} \dfrac{\gamma \hbar}{2 e M_s L} \Theta_\mrm{SH} J_c \, \int d\vec{r}\, (\vec{m} \times \vec{\sigma}) \cdot \partial_i \vec{m} \\
+&= -\dfrac{\hbar}{2 e} \Theta_\mrm{SH} J_c \, \int d\vec{r}\, (\vec{m} \times \vec{\sigma}) \cdot \partial_i \vec{m} \\
+\end{split}
+\end{equation}
+
+\end{document}

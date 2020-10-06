@@ -1,0 +1,146 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,xcolor}
+\fboxrule=1pt
+\usepackage{amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{fit}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\AR}[1]{\textcolor{red}{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Closed vs Open Quantum Systems}
+
+\author{Avinash Rustagi}
+\email{arustag@purdue.edu}
+%
+%\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+%
+\noindent \textcolor{blue}{Reference: Lectures from Prof. Ivan Deutsch}
+\vspace{0.2in}
+
+Closed quantum systems are systems where the energy of the system is conserved in time. This corresponds to the familiar quantum mechanical treatments where the evolution of a system is unitary. However, we know that no system is truly isolated for this to hold. Thus, the quantum systems are not closed but open, meaning that there are dissipation and re-feeding mechanisms that play a role when correctly describing a physical system.
+
+\section{Closed Quantum System}
+We are familiar of the typical quantum mechanical description of a closed quantum system in terms of wavefunctions. But equivalently, we could have worked with the formulation in terms of density matrices. Thus, similar to evaluating the time evolution of the wavefunction, we could now consider time evolution of the density matrix,
+\begin{equation}
+\rho(t_2) = U(t_2,t_1) \rho(t_1) U^\dagger(t_2,t_1) 
+\end{equation}
+where $U(t_2,t_1)$ is the time-evolution operator. For time-evolution over a small time interval ($dt \rightarrow 0$), this operator can be written as 
+\begin{equation}
+U(t+dt,t) \approx 1 - \dfrac{i}{\hbar} H(t) dt
+\end{equation}
+[Remember that the time evolution for a time-independent Hamiltonian is simply $U(t_2,t_1)=\exp(-iH(t_2-t_1)/\hbar)$]. Thus, the density matrix after a short time interval is
+\begin{equation}
+\rho(t+dt) = \rho(t) - \dfrac{i}{\hbar} [H(t),\rho(t)] dt
+\end{equation}
+which can now be expressed as a differential equation for the density matrix
+\begin{equation}
+\dfrac{d\rho(t)}{dt} = - \dfrac{i}{\hbar} [H(t),\rho(t)]
+\end{equation}
+or equivalently, we could have written an equation of motion for the time-evolution operator
+\begin{equation}
+\dfrac{dU(t)}{dt} = - \dfrac{i}{\hbar} H(t) \, U(t)
+\end{equation}
+
+\section{Open Quantum System}
+Now, for the case of open quantum system, we follow the knowledge from closed quantum systems to define a map that takes up from an initial time to a later time [also referred to as a CP map]
+\begin{equation}
+\rho(t_2) = a(t_2,t_1) [\rho(t_1)]
+\end{equation}
+Thus, for time-evolution over a short time interval
+\begin{equation}
+\rho(t+dt) = a(t+dt,t) [\rho(t)] = \rho(t) + \mathcal{L} [\rho(t)] \, dt
+\end{equation}
+where $\mathcal{L}$ is referred to as the Lindbladian which is a superoperator i.e. it acts on the density matrix operator [this is in line with the familiar functionals that are functions acting on functions]. What is interesting is the form of this Lindbladian and how it differs from the case of closed quantum systems,
+\begin{equation}
+\mathcal{L} [\rho(t)] = - \dfrac{i}{\hbar} \left( H_\mrm{eff}\, \rho - \rho \, H_\mrm{eff}^\dagger  \right) + \sum_\mu L_\mu \rho L_\mu^\dagger
+\end{equation}
+where the effective Hamiltonian is
+\begin{equation}
+H_\mrm{eff} = H - \dfrac{i\hbar}{2} \sum_\mu L_\mu^\dagger L_\mu
+\end{equation}
+Here $L_\mu$ are the Lindblad/Jump operators (the meaning of this will be clear in a bit). The first thing to note is that the addition of these Lindblad operators makes the Hamitonian non-unitary which in turn makes the time-evolution non-unitary. This is a key aspect of open quantum systems. Now, to better understand the dynamics from Lindbladian, let us look at the time-evolution equation of density matrix
+\begin{equation}
+\dfrac{d\rho}{dt} = - \dfrac{i}{\hbar} [H,\rho] + \dfrac{1}{2} \sum_\mu \left( 2 L_\mu \rho L_\mu^\dagger - L_\mu^\dagger L_\mu \rho - \rho L_\mu^\dagger L_\mu  \right)
+\end{equation}
+The terms containing the Lindblad operators cause dissipation. To see this clearly, let us consider the case of setting $H=0$. We note that the diagonal components of the density matrix is the population and the off-diagonal components are coherence. With that in mind, we can always write the density matrix in some diagonal basis and if that is the case, then the density matrix can be written as
+\begin{equation}
+\rho(t) = \sum_j P_j \vert j \rangle \langle j \vert
+\end{equation}
+where $P_j$ denotes the time-dependent population in the j-th state. As we can see that $P_k = \langle k \vert \rho \vert k \rangle$. Therefore
+\begin{equation}
+\begin{split}
+\dfrac{dP_k}{dt} &= \langle k \vert \dfrac{d\rho}{dt} \vert k \rangle \\
+&=  \dfrac{1}{2} \sum_\mu \left( 2 \langle k \vert L_\mu \rho L_\mu^\dagger\vert k \rangle  - \langle k \vert L_\mu^\dagger L_\mu \rho \vert k \rangle - \langle k \vert \rho L_\mu^\dagger L_\mu \vert k \rangle  \right)
+\end{split}
+\end{equation}
+To get a better understanding, let us look at these terms one at a time.
+\begin{equation}
+\text{1)} \qquad \langle k \vert L_\mu \rho L_\mu^\dagger\vert k \rangle = \sum_j \langle k \vert L_\mu \vert j \rangle \langle j \vert L_\mu^\dagger\vert k \rangle P_j \equiv \sum_j \gamma_{k \leftarrow j} P_j \qquad \text{where} \quad  \gamma_{k \leftarrow j} = \vert \langle k \vert L_\mu \vert j \rangle \vert^2
+\end{equation}
+\begin{equation}
+\text{2)} \qquad \langle k \vert L_\mu^\dagger  L_\mu \rho \vert k \rangle = \langle k \vert L_\mu^\dagger L_\mu \vert k \rangle P_k = \sum_j \langle k \vert L_\mu^\dagger \vert j \rangle \langle j \vert L_\mu \vert k \rangle P_k \equiv \sum_j \gamma_{j \leftarrow k} P_k
+\end{equation}
+\begin{equation}
+\text{3)} \qquad \langle k \vert \rho  L_\mu^\dagger L_\mu \vert k \rangle = \langle k \vert L_\mu^\dagger L_\mu \vert k \rangle P_k = \sum_j \langle k \vert L_\mu^\dagger \vert j \rangle \langle j \vert L_\mu \vert k \rangle P_k \equiv \sum_j \gamma_{j \leftarrow k} P_k
+\end{equation}
+Thus,
+\begin{equation}
+\begin{split}
+\dfrac{dP_k}{dt} &= \sum_\mu \sum_j \left( \gamma_{k \leftarrow j} P_j - \gamma_{j \leftarrow k} P_k  \right)
+\end{split}
+\end{equation}
+We note that the $j=k$ terms cancel, so we not need to exclude that in the sum. From this, we can clearly see that
+\begin{equation}
+\begin{split}
+& \sum_mu L_\mu \rho L_\mu^\dagger \qquad \Rightarrow \qquad \text{Re-feeding Term} \\
+&\sum_mu \left(L_\mu^\dagger L_\mu \rho - \rho L_\mu^\dagger L_\mu \right) \qquad \Rightarrow \qquad \text{Decay Term} 
+\end{split}
+\end{equation}
+Thus, we see that the terms having the Lindblad operators correspond to dissipation (which includes both re-feeding/gain and decay terms).
+
+\subsection{Example Case: Excited two level system in vacuum}
+When we have an excited two level system ($\{\vert g \rangle, \vert e \rangle \}$) in vacuum, then the system can only decay via spontaneous emission. Thus, writing the equation for population of the excited state
+\begin{equation}
+\dfrac{dP_e}{dt} = \gamma_{e \leftarrow g} P_g - \gamma_{g \leftarrow e} P_e
+\end{equation}
+Looking at this, we can infer that in vacuum, the rate $\gamma_{e \leftarrow g}$ to go from ground to excited state is zero, thus
+\begin{equation}
+\gamma_{e \leftarrow g} = 0 \qquad \Rightarrow \qquad \vert \langle e \vert L_\mu \vert g \rangle \vert^2 = 0
+\end{equation}
+Next, we know that the excited state can decay in vacuum by spontaneous emission (Einstein A Coefficient), thus
+\begin{equation}
+\gamma_{g \leftarrow e} = \Gamma \qquad \Rightarrow \qquad \vert \langle g \vert L_\mu \vert e \rangle \vert^2 = \Gamma
+\end{equation}
+where 
+\begin{equation}
+\Gamma = \dfrac{4}{3\hbar} \left(\dfrac{\omega_0}{c} \right)^3 \vert \vec{d}_{eg} \vert^2
+\end{equation}
+From the rates that we expect, it is easy to conclude that the Lindblad operator must be of the form
+\begin{equation}
+L_\mu = \sqrt{\Gamma} \sigma_- \equiv \sqrt{\Gamma} \vert g \rangle \langle e \vert.
+\end{equation}
+\end{document}

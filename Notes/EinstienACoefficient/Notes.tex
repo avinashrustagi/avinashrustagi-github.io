@@ -1,0 +1,149 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,xcolor}
+\fboxrule=1pt
+\usepackage{amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{fit}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\AR}[1]{\textcolor{red}{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Einstein A-Coefficient}
+
+\author{Avinash Rustagi}
+\email{arustag@purdue.edu}
+%
+%\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+%
+%\noindent \textcolor{blue}{Reference: Phys. Rev. Lett. 30, 230 (1973)}
+%\vspace{0.2in}
+
+Einstein's A Coefficient is related to the spontaneous emission of light. Let us consider the Hamiltonian for a free particle
+\begin{equation}
+H_0 = \dfrac{p^2}{2m}
+\end{equation}
+In presence of an electromagnetic field, the canonical momentum of this particle gets modified as per the Peierl's substitution
+\begin{equation}
+\vec{p} \rightarrow \vec{p} - \dfrac{e}{c} \vec{A}
+\end{equation}
+where $\vec{A}$ is the magnetic vector potential corresponding to the electromagnetic field. Upon substitution, the Hamiltonian can be expanded in orders of the vector potential where we keep terms upto linear order,
+\begin{equation}
+H = H_0 + U + \mathcal{O}(A^2) \quad \text{where} \quad U = - \dfrac{e}{m c} \vec{A}\cdot \vec{p}
+\end{equation}
+Let us now consider the radiation to be monochromatic
+\begin{equation}
+\vec{A} = \hat{\epsilon}_s \, A \cos(\vec{k}\cdot\vec{r}-\omega t)
+\end{equation}
+where $\hat{\epsilon}_s$ is the polarization of the field. This implies
+\begin{equation}
+\begin{split}
+U &= - \dfrac{eA}{2 m c} \left[ e^{i\vec{k}\cdot\vec{r}} e^{-i\omega t} + e^{-i\vec{k}\cdot\vec{r}} e^{i\omega t}\right] \hat{\epsilon}_s \cdot \vec{p} \\
+&= U(\vec{k}) e^{-i\omega t} + U(-\vec{k}) e^{i\omega t}\\
+& \, \, \text{Absorption} \quad \text{Stimilated Emission}
+\end{split}
+\end{equation}
+where 
+\begin{equation}
+U(\vec{k}) = - \dfrac{eA}{2 m c} e^{i\vec{k}\cdot\vec{r}} \,\, \hat{\epsilon}_s \cdot \vec{p}
+\end{equation}
+Given the size of the atomic particle is small compared to the wavelength of the radiation, we can invoke the dipole approximation ($\vec{k}\cdot \vec{r} \ll 1$ which implies $\vec{k} \rightarrow 0$),
+\begin{equation}
+U(\vec{k} = 0) = - \dfrac{eA}{2 m c} \, \hat{\epsilon}_s \cdot \vec{p}
+\end{equation}
+Let us now consider the commutation relation
+\begin{equation}
+[H_0, \vec{r}] = - \dfrac{i\hbar}{m} \vec{p} \qquad \Rightarrow \qquad \vec{p} = \dfrac{im}{\hbar} [H_0, \vec{r}] 
+\end{equation}
+Since, the primary effect of exposure to EM field is transition between states, let us consider a transition matrix element
+\begin{equation}
+\begin{split}
+\langle n \vert U(\vec{k} = 0) \vert m \rangle &= - \dfrac{eA}{2 m c} \, \hat{\epsilon}_s \cdot  \, \langle n \vert \vec{p} \vert m \rangle \\
+&= - \dfrac{eA}{2 m c} \dfrac{im}{\hbar} \, \hat{\epsilon}_s \cdot  \, \langle n \vert [H_0, \vec{r}] \vert m \rangle \\
+&= i \dfrac{A \omega}{2c} \, \hat{\epsilon}_s \cdot \vec{d}_{fi}
+\end{split}
+\end{equation}
+where $\omega_0 = (E_n-E_m)/\hbar$ and $\vec{d}_{fi} = \langle n \vert -e \vec{r} \vert m \rangle$. This matrix element allows us to compute the transition rates using Fermi's Golden rule.
+
+\subsection{Absorption Rate}
+The absorption rate as determined by the Fermi's Golden rule is
+\begin{equation}
+\begin{split}
+W^\mrm{abs}_{f \leftarrow i} &= \dfrac{2\pi}{\hbar} \sum_{\vec{k},s} \vert \langle n \vert U(\vec{k} = 0) \vert m \rangle \vert^2 \delta \left( E_n-E_m-\hbar\omega\right) \\
+&=  \dfrac{2\pi}{\hbar} \int d\Omega \int d(\hbar\omega)\, \rho(\hbar\omega) \sum_s \vert \langle n \vert U(\vec{k} = 0) \vert m \rangle \vert^2 \delta \left( E_n-E_m-\hbar\omega\right) \\
+\end{split}
+\end{equation}
+where the sum over all polarizations and over all wavevectors is accounted for. We thus need to now quantify the density of states for EM radiation,
+\begin{equation}
+V \dfrac{d^3k}{(2\pi)^3} = \rho(\hbar\omega) d(\hbar\omega) d\Omega \quad \Rightarrow \quad \rho(\hbar\omega) d\Omega = \dfrac{V}{8\pi^3} \left( \dfrac{\omega}{c}\right)^2 \dfrac{1}{\hbar c} d\Omega
+\end{equation}
+Through the square of the matrix element in the rate expression, we will have quadratic dependence of the vector potential. This is proportional to the intensity of radiation and thus can be related to the energy in the radiation field. Let us consider the energy of $N$ monochromatic photons in the radiation, then
+\begin{equation}
+\vec{A} = \hat{\epsilon}_s \, A \cos(\vec{k}\cdot\vec{r}-\omega t) \quad \Rightarrow \quad \vec{E} = -\dfrac{\omega}{c} \hat{\epsilon}_s \, A \sin(\vec{k}\cdot\vec{r}-\omega t) \quad \vec{B} = -\dfrac{\omega}{c}  (\hat{k}\times\hat{\epsilon}_s) \, A \sin(\vec{k}\cdot\vec{r}-\omega t)
+\end{equation}
+Therefore,
+\begin{equation}
+\begin{split}
+N\hbar\omega &= \int d\vec{r} \, \dfrac{1}{T} \int_0^{T=2\pi/\omega} dt \, \dfrac{E^2+B^2}{8\pi} \\
+&= \dfrac{V}{8\pi} \left( \dfrac{\omega}{c}\right)^2 A^2 
+\end{split}
+\end{equation}
+where the time average over the period of the radiation is $\langle \sin^2(\vec{k}\cdot\vec{r}-\omega t) \rangle = 1/2$. With these relations, we can now evaluate the absorption rate,
+\begin{equation}
+\begin{split}
+W^\mrm{abs}_{f \leftarrow i} &=  \dfrac{2\pi}{\hbar} \int d(\hbar\omega)\, \dfrac{V}{8\pi} \left( \dfrac{\omega_0}{c}\right)^2  \sum_s \int d\Omega \dfrac{A^2 \omega^2}{4c^2} \vert \hat{\epsilon}_s \cdot \vec{d}_{fi}\vert^2 \delta \left( E_n-E_m-\hbar\omega\right) \\
+&= \dfrac{1}{4} \dfrac{2\pi}{\hbar} \dfrac{VA^2}{8\pi^3 \hbar c} \left( \dfrac{\omega_0}{c}\right)^4 \int d\Omega \, \left[ \vert \hat{\epsilon}_1 \cdot \vec{d}_{fi} \vert^2 + \vert \hat{\epsilon}_2 \cdot \vec{d}_{fi} \vert^2 \right]
+\end{split}
+\end{equation}
+We note that for EM fields, the directions $\{\hat{\epsilon}_1, \hat{\epsilon}_2, \hat{k}\}$ form an orthogonal triad. Therefore,
+\begin{equation}
+\vec{d}_{fi} = (\vec{d}_{fi} \cdot \hat{\epsilon}_1) \hat{\epsilon}_1 + (\vec{d}_{fi} \cdot \hat{\epsilon}_2) \hat{\epsilon}_2 + (\vec{d}_{fi} \cdot \hat{k}) \hat{k}
+\end{equation}
+which implies
+\begin{equation}
+\vert \hat{\epsilon}_1 \cdot \vec{d}_{fi} \vert^2 + \vert \hat{\epsilon}_2 \cdot \vec{d}_{fi} \vert^2 = \vert \vec{d}_{fi} \vert^2 - \vert \vec{d}_{fi} \cdot \hat{k} \vert^2
+\end{equation}
+Without loss of generality, we can choose the z-axis along the dipole transition element. Consequently, we can carry out the angular integral over the solid angle,
+\begin{equation}
+\int d\Omega  [\vert \vec{d}_{fi} \vert^2 - \vert \vec{d}_{fi} \cdot \hat{k} \vert^2] = \int d\theta \, \sin\theta \int d\phi \, \vert \vec{d}_{fi} \vert^2 \sin^2\theta = \dfrac{8\pi}{3} \vert \vec{d}_{fi} \vert^2
+\end{equation}
+Thus, we can finally evaluate the absorption rate,
+\begin{equation}
+W^\mrm{abs}_{f \leftarrow i} = N \dfrac{4}{3\hbar} \left( \dfrac{\omega_0}{c}\right)^3 \vert \vec{d}_{fi} \vert^2
+\end{equation}
+
+\subsection{Stimulated Emission Rate}
+We can similarly follow the steps to evaluate the rate of stimulated emission
+\begin{equation}
+W^\mrm{st. em.}_{f \leftarrow i} = N \dfrac{4}{3\hbar} \left( \dfrac{\omega_0}{c}\right)^3 \vert \vec{d}_{fi} \vert^2
+\end{equation}
+
+\subsection{Spontaneous Emission}
+In this case, the excited state spontaneously decays emitting a single photon. Thus, we can extend the earlier to the case of a single photon and write the rate of spontaneous emission
+\begin{equation}
+W^\mrm{sp. em.}_{f \leftarrow i} = \dfrac{4}{3\hbar} \left( \dfrac{\omega_0}{c}\right)^3 \vert \vec{d}_{fi} \vert^2
+\end{equation}
+The above expression is the Einstein A-Coefficient.
+\end{document}

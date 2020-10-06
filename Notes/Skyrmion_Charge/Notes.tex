@@ -1,0 +1,91 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,xcolor}
+\fboxrule=1pt
+\usepackage{amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{fit}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\AR}[1]{\textcolor{red}{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Skyrmion: Topological Charge}
+
+\author{Avinash Rustagi}
+\email{arustag@purdue.edu}
+%
+%\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+%
+The topological charge of a skyrmion is defined as
+\begin{equation}
+Q_\mrm{sk} =\dfrac{1}{4\pi}\int dxdy\, \vec{m} \cdot \left( \dfrac{\partial \vec{m}}{\partial x} \times \dfrac{\partial \vec{m}}{\partial y} \right)
+\end{equation}
+The unit magnetization can be described in terms of two fields $\Theta,\Phi$:
+\begin{equation}
+\vec{m} = \left( \begin{array}{c}
+\sin\Theta \cos\Phi \\ 
+\sin\Theta \sin\Phi \\ 
+\cos\Theta
+\end{array} \right)
+\end{equation}
+Evaluating the terms in skymrion charge density
+%\begin{widetext}
+\begin{equation}
+\begin{split}
+m_x \left( \dfrac{\partial \vec{m}}{\partial x} \times \dfrac{\partial \vec{m}}{\partial y} \right)_x &= \sin^3\Theta \cos^2\Phi \left[ \dfrac{\partial \Theta}{\partial x}\dfrac{\partial \Phi}{\partial y}-\dfrac{\partial \Phi}{\partial x}\dfrac{\partial \Theta}{\partial y} \right] \\
+m_y \left( \dfrac{\partial \vec{m}}{\partial x} \times \dfrac{\partial \vec{m}}{\partial y} \right)_y &= \sin^3\Theta \sin^2\Phi \left[ \dfrac{\partial \Theta}{\partial x}\dfrac{\partial \Phi}{\partial y}-\dfrac{\partial \Phi}{\partial x}\dfrac{\partial \Theta}{\partial y} \right] \\
+m_z \left( \dfrac{\partial \vec{m}}{\partial x} \times \dfrac{\partial \vec{m}}{\partial y} \right)_z &= \sin\Theta \cos^2\Theta \left[ \dfrac{\partial \Theta}{\partial x}\dfrac{\partial \Phi}{\partial y}-\dfrac{\partial \Phi}{\partial x}\dfrac{\partial \Theta}{\partial y} \right] \\
+\end{split}
+\end{equation}
+%\end{widetext}
+Therefore,
+\begin{equation}
+Q_\mrm{sk} =\dfrac{1}{4\pi}\int dxdy\, \sin\Theta \left[ \dfrac{\partial \Theta}{\partial x}\dfrac{\partial \Phi}{\partial y}-\dfrac{\partial \Phi}{\partial x}\dfrac{\partial \Theta}{\partial y} \right]
+\end{equation}
+The transformation from cartesian to polar coordinates
+\begin{equation}
+\begin{split}
+\dfrac{\partial \Theta}{\partial x} &= \cos\phi \dfrac{\partial \Theta}{\partial r} -\dfrac{\sin\phi}{r} \dfrac{\partial \Theta}{\partial \phi} \\
+\dfrac{\partial \Theta}{\partial y} &= \sin\phi \dfrac{\partial \Theta}{\partial r} +\dfrac{\cos\phi}{r} \dfrac{\partial \Theta}{\partial \phi} \\
+\dfrac{\partial \Phi}{\partial x} &=  \cos\phi \dfrac{\partial \Phi}{\partial r} -\dfrac{\sin\phi}{r} \dfrac{\partial \Phi}{\partial \phi}\\
+\dfrac{\partial \Phi}{\partial y} &= \sin\phi \dfrac{\partial \Phi}{\partial r} +\dfrac{\cos\phi}{r} \dfrac{\partial \Phi}{\partial \phi} \\
+\end{split}
+\end{equation}
+Invoking the observation $\Theta = \Theta(r)$ and $\Phi = \Phi(\phi)$,
+\begin{equation}
+\begin{split}
+Q_\mrm{sk} &=\dfrac{1}{4\pi}\int_0^\infty dr \, \sin\Theta \dfrac{d\Theta}{dr} \int_0^{2\pi} d\phi\,  \dfrac{d\Phi}{d\phi} \\
+&= \dfrac{[m_z(0)-m_z(\infty)]}{2} \dfrac{[\Phi(2\pi)-\Phi(0)]}{2\pi} 
+\end{split}
+\end{equation}
+For a skyrmion with magnetization in +z direction at the center and -z direction outside the the domain wall implies $m_z(0)-m_z(\infty) = 2$, and with $\Phi(\phi) = \nu \phi + \gamma$ where $\nu$ is the vorticity and $\gamma$ is the helicity,
+\begin{equation}
+\begin{split}
+Q_\mrm{sk} &= \nu
+\end{split}
+\end{equation}
+which denotes the number of times the magnetization winds i.e. winding number of target space on the base space. For the simplest cases, $\nu=1$ implying $Q_\mrm{sk}=1$.
+%
+\end{document}

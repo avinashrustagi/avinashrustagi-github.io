@@ -1,0 +1,235 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+
+\begin{document}
+\title{Correlation Energy}
+
+\author{Avinash Rustagi}
+\email{arustag@ncsu.edu}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, NC 27695}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+\section{Hamiltonian with variable coupling constant}
+\begin{equation}
+\begin{split}
+&H(\lambda)=H_{0}+\lambda H_{1} \\
+&H(1)=H \qquad H(0)=H_{0}
+\end{split}
+\end{equation}
+Suppose we know the eigenvalues and eigenfunctions of $H(\lambda)$, then
+\begin{equation}
+\begin{split}
+&H(\lambda) \vert \psi_{0}(\lambda) \rangle = E(\lambda) \vert \psi_{0}(\lambda) \rangle \\
+&\text{where  } \langle \psi_{0}(\lambda) \vert \psi_{0}(\lambda) \rangle =1
+\end{split}
+\end{equation}
+
+Therefore
+\begin{equation}
+\begin{split}
+&E(\lambda) = \langle \psi_{0}(\lambda) \vert  H(\lambda)\vert \psi_{0}(\lambda) \rangle \\
+\Rightarrow &\dfrac{dE(\lambda)}{d\lambda}= \langle \psi_{0}(\lambda) \vert  H_{1} \vert \psi_{0}(\lambda) \rangle + E(\lambda) \dfrac{d}{d\lambda} \langle \psi_{0}(\lambda) \vert \psi_{0}(\lambda) \rangle \\
+\Rightarrow &\dfrac{dE(\lambda)}{d\lambda}= \langle \psi_{0}(\lambda) \vert  H_{1} \vert \psi_{0}(\lambda) \rangle 
+\end{split}
+\end{equation}
+Therefore upon integration
+\begin{equation}
+\begin{split}
+E-E_{0} &= \int_{0}^{1} d\lambda \, \langle \psi_{0}(\lambda) \vert  H_{1} \vert \psi_{0}(\lambda) \rangle \\
+&= \int_{0}^{1} \dfrac{d\lambda}{\lambda} \, \langle \psi_{0}(\lambda) \vert  \lambda H_{1} \vert \psi_{0}(\lambda) \rangle 
+\end{split}
+\end{equation}
+
+\section{Correlation Energy}
+
+The energy due to Coulomb interaction is
+\begin{equation}
+\begin{split}
+\langle V \rangle= \dfrac{1}{2} \sum_{k,k',q} V(q) \langle c_{k+q}^\dagger c_{k'-q}^\dagger c_{k'} c_{k} \rangle
+\end{split}
+\end{equation}
+ Thus the total energy of the system is
+ \begin{equation}
+\begin{split}
+E=E_{\mathrm{kin}}+E_{\mathrm{exc}}+E_{\mathrm{corr}}
+\end{split}
+\end{equation}
+where $E_{\mathrm{corr}}=\langle V \rangle-E_{\mathrm{exc}}$.
+%
+Define
+\begin{equation}
+\begin{split}
+&i D(q,\omega)= \sum_{k,k'} \langle c_{k+q}^\dagger c_{k'-q}^\dagger c_{k'} c_{k} \rangle \\
+&i D_{0}(q,\omega)= \sum_{k,k'} \langle c_{k+q}^\dagger c_{k'-q}^\dagger c_{k'} c_{k} \rangle_{0}
+\end{split}
+\end{equation}
+where '$\langle ... \rangle$' is the average with respect to the interacting ground state while '$\langle ... \rangle_{0}$' is the average with respect to the non-interacting ground state. Therefore
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}=\dfrac{1}{2} \sum_{q} \int_{-\infty}^{\infty} \dfrac{\hbar d\omega}{2\pi} V(q) \left[ i D(q,\omega)- i D_{0}(q,\omega) \right]
+\end{split}
+\end{equation}
+Assuming that the Coulomb interaction term can be tuned by a coupling constant $\lambda$,
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}=\dfrac{i}{2}\int_0^1\dfrac{d\lambda}{\lambda} \sum_{q} \int_{-\infty}^{\infty} \dfrac{\hbar d\omega}{2\pi} \lambda V(q) \left[ D_{\lambda}(q,\omega)- D_{0}(q,\omega) \right]
+\end{split}
+\end{equation}
+The perturbative expansion of the average '$\langle ... \rangle$' is done 
+\begin{equation}
+\begin{split}
+V(q)D(q,\omega)&=U(q,\omega) D^*(q,\omega) \\
+&=\left[ V+VD^* V + ....\right] D^*(q,\omega) \\
+&=\dfrac{V(q)D^*(q,\omega)}{1-V(q)D^*(q,\omega)}
+\end{split}
+\end{equation}
+where $D^*(q,\omega)$ is the proper polarization. [If only the polarization bubble is included as proper polarization, then we get the contribution of all the ring diagrams].
+%
+The dielectric constant is then defined as
+\begin{equation}
+\varepsilon(q,\omega) = 1-V(q)D^*(q,\omega) \Rightarrow V(q)D(q,\omega) = \dfrac{1}{\varepsilon(q,\omega)}-1
+\end{equation}
+Define
+\begin{equation}
+\begin{split}
+& \lambda  V(q)D_{0}(q,\omega) = \Pi_{0,\lambda}(q,\omega) \\
+& \lambda V(q)D_{\lambda}(q,\omega) = \dfrac{1}{\varepsilon_{\lambda}(q,\omega)}-1
+\end{split}
+\end{equation}
+Thus, the correlation energy can be expressed as 
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}&=\dfrac{i}{2}\int_0^1\dfrac{d\lambda}{\lambda} \sum_{q} \int_{-\infty}^{\infty} \dfrac{\hbar d\omega}{2\pi} \lambda V(q) \left[ D_{\lambda}(q,\omega)- D_{0}(q,\omega) \right] \\
+&=i\int_0^1\dfrac{d\lambda}{\lambda} \sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[ \dfrac{1}{\varepsilon_{\lambda}(q,\omega)}-1- \Pi_{0,\lambda}(q,\omega) \right] \\
+\end{split}
+\end{equation}
+Since energy is real, and in general $\varepsilon$ and $\Pi$ are complex. We can pick the appropriate components such the the correlation energy is real.
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}&=-\int_0^1\dfrac{d\lambda}{\lambda} \sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[\mathrm{Im}\left( \dfrac{1}{\varepsilon_{\lambda}(q,\omega)} \right)- \mathrm{Im}\left(\Pi_{0,\lambda}(q,\omega) \right) \right] \\
+\end{split}
+\end{equation}
+
+\section{Electron One-component system}
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}&=-\int_0^1\dfrac{d\lambda}{\lambda} \sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[\mathrm{Im}\left( \dfrac{1}{\varepsilon_{\lambda}(q,\omega)} \right)- \mathrm{Im}\left(\Pi_{0,\lambda}(q,\omega) \right) \right] \\
+\end{split}
+\end{equation}
+where the dielectric constant is the sum of the electron polarization $\varepsilon=1-\Pi_{e,\lambda}^H $ and $\Pi_{0,\lambda}=\Pi_{e,\lambda}$. The superscript '$H$' in the dielectric constant corresponds to the Hubbard correction.
+\begin{equation}
+\Pi_{e,\lambda}^H = \dfrac{\Pi_{e,\lambda}}{1+f \Pi_{e,\lambda}}
+\end{equation}
+For the case of electrons, 
+\begin{equation}
+\begin{split}
+&\Pi_{e,\lambda}=A_{\lambda}+i \Sigma_{\lambda} \\
+& \Pi_{e,\lambda}^H = \dfrac{\Pi_{e,\lambda}}{1+f \Pi_{e,\lambda}} \\
+& \dfrac{1}{\varepsilon_{\lambda}} = \dfrac{1+f \Pi_{e,\lambda}}{1-(1-f)\Pi_{e,\lambda}} = \dfrac{1+f A_{\lambda}+i f \Sigma_{\lambda}}{1- A'_{\lambda}-i \Sigma'_{\lambda}}
+\end{split}
+\end{equation}
+where $A'_{\lambda}=(1-f)A_{\lambda}$ and $\Sigma'_{\lambda}=(1-f)\Sigma_{\lambda}$. The term $\Pi_{0,\lambda}=\Pi_{e,\lambda}= A_{\lambda}-i \Sigma_{\lambda}$.
+\begin{equation}
+\begin{split}
+& \mathrm{Im}\left[\dfrac{1}{\varepsilon_{\lambda}} \right] = \dfrac{\Sigma_{\lambda}}{(1-A'_{\lambda})^2+(\Sigma'_{\lambda})^2} \\
+& \mathrm{Im}\left[\Pi_{0,\lambda} \right] = \Sigma_{\lambda}
+\end{split}
+\end{equation}
+Since $A_{\lambda}=\lambda A$ and $\Sigma_{\lambda}=\lambda \Sigma$,
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}&=-\int_0^1\dfrac{d\lambda}{\lambda} \sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[ \dfrac{\lambda \Sigma}{(1-\lambda A')^2+\lambda^2 (\Sigma')^2} - \lambda \Sigma \right] \\
+&=\sum_{q} \int_{0}^{\infty} \dfrac{d\omega}{2\pi} \left[ \dfrac{\Sigma}{\Sigma'} \tan^{-1} \left(\dfrac{-\Sigma'}{1-A'} \right)+  \Sigma \right] 
+\end{split}
+\end{equation}
+Thus the correlation energy is
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}&=\sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[ \dfrac{1}{1-f} \tan^{-1} \left(\dfrac{-(1-f) \Sigma}{1-(1-f) A} \right)+ \Sigma \right] 
+\end{split}
+\end{equation} 
+The Hubbard correction factor $f$ is
+\begin{equation*} 
+f(q)=\begin{cases}
+\dfrac{1}{2}\dfrac{q^2}{q^2+k_{F}^{2}} &\text{3D} \\
+\dfrac{1}{2}\dfrac{q}{q+k_{F}} &\text{2D} 
+\end{cases} 
+\end{equation*}
+The correlation energy per electron is 
+\begin{equation}
+\begin{split}
+\varepsilon_\mathrm{corr}&=\dfrac{1}{N}\sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[ \dfrac{1}{1-f} \tan^{-1} \left(\dfrac{-(1-f) \Sigma}{1-(1-f) A} \right)+ \Sigma \right] 
+\end{split}
+\end{equation}
+where $N$ is the number of electrons.
+
+\section{Electron-Hole Two-component system}
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}&=-\int_0^1\dfrac{d\lambda}{\lambda} \sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[\mathrm{Im}\left( \dfrac{1}{\varepsilon_{\lambda}(q,\omega)} \right)- \mathrm{Im}\left(\Pi_{0,\lambda}(q,\omega) \right) \right] \\
+\end{split}
+\end{equation}
+where the dielectric constant is the sum of the electron and hole polarization $\varepsilon=1-\left( \Pi_{e,\lambda}^H + \Pi_{h,\lambda}^H\right)$ and $\Pi_{0,\lambda}=\Pi_{e,\lambda}+\Pi_{h,\lambda}$. The superscript '$H$' in the dielectric constant corresponds to the Hubbard correction.
+\begin{equation}
+\Pi_{e/h,\lambda}^H = \dfrac{\Pi_{e/h,\lambda}}{1+f \Pi_{e/h,\lambda}}
+\end{equation}
+If the electrons and holes have the same mass, 
+\begin{equation}
+\begin{split}
+&\Pi_{e,\lambda}=\Pi_{h,\lambda}=\Pi_{\lambda}=A_{\lambda}+i \Sigma_{\lambda} \\
+& \Pi_{e,\lambda}^H + \Pi_{h,\lambda}^H = \dfrac{2 \Pi_{\lambda}}{1+f \Pi_{\lambda}} \\
+& \dfrac{1}{\varepsilon_{\lambda}} = \dfrac{1+f \Pi_{\lambda}}{1-(2-f)\Pi_{\lambda}} = \dfrac{1+f A_{\lambda}+i f \Sigma_{\lambda}}{1- A'_{\lambda}-i \Sigma'_{\lambda}}
+\end{split}
+\end{equation}
+where $A'_{\lambda}=(2-f)A_{\lambda}$ and $\Sigma'_{\lambda}=(2-f)\Sigma_{\lambda}$. The term $\Pi_{0,\lambda}=\Pi_{e,\lambda}+\Pi_{h,\lambda}=2 A_{\lambda}-i 2 \Sigma_{\lambda}$.
+\begin{equation}
+\begin{split}
+& \mathrm{Im}\left[\dfrac{1}{\varepsilon_{\lambda}} \right] = \dfrac{2 \Sigma_{\lambda}}{(1-A'_{\lambda})^2+(\Sigma'_{\lambda})^2} \\
+& \mathrm{Im}\left[\Pi_{0,\lambda} \right] = 2 \Sigma_{\lambda}
+\end{split}
+\end{equation}
+Since $A_{\lambda}=\lambda A$ and $\Sigma_{\lambda}=\lambda \Sigma$,
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}&=-\int_0^1\dfrac{d\lambda}{\lambda} \sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[ \dfrac{2\lambda \Sigma}{(1-\lambda A')^2+\lambda^2 (\Sigma')^2} - \lambda 2 \Sigma \right] \\
+&=\sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[ \dfrac{2\Sigma}{\Sigma'} \tan^{-1} \left(\dfrac{-\Sigma'}{1-A'} \right)+ 2 \Sigma \right] 
+\end{split}
+\end{equation}
+From this we can generalize to a situation where the electron and hole masses are different by making the following substitutions
+\begin{equation}
+\begin{split}
+& 2 \Sigma = \Sigma_{e} +\Sigma_{h} \\
+& \Sigma' = (2-f) \Sigma = (1-f/2) (\Sigma_{e} +\Sigma_{h}) \\
+& A' = (2-f) A = (1-f/2) (A_{e} +A_{h})
+\end{split}
+\end{equation}
+Thus the correlation energy is
+\begin{equation}
+\begin{split}
+E_{\mathrm{corr}}&=\sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[ \dfrac{1}{1-f/2} \tan^{-1} \left(\dfrac{-(1-f/2) (\Sigma_{e} +\Sigma_{h})}{1-(1-f/2) (A_{e} +A_{h})} \right)+ (\Sigma_{e} +\Sigma_{h}) \right] 
+\end{split}
+\end{equation} 
+The Hubbard correction factor $f$ is
+\begin{equation*} 
+f(q)=\begin{cases}
+\dfrac{1}{2}\dfrac{q^2}{q^2+k_{F}^{2}} &\text{3D} \\
+\dfrac{1}{2}\dfrac{q}{q+k_{F}} &\text{2D} 
+\end{cases} 
+\end{equation*}
+The correlation energy per electron-hole pair is 
+\begin{equation}
+\begin{split}
+\varepsilon_\mathrm{corr}&=\dfrac{1}{N}\sum_{q} \int_{0}^{\infty} \dfrac{\hbar d\omega}{2\pi} \left[ \dfrac{1}{1-f/2} \tan^{-1} \left(\dfrac{-(1-f/2) (\Sigma_{e} +\Sigma_{h})}{1-(1-f/2) (A_{e} +A_{h})} \right)+ (\Sigma_{e} +\Sigma_{h}) \right] 
+\end{split}
+\end{equation}
+where $N$ is the number of electron-hole pairs.
+
+\end{document}

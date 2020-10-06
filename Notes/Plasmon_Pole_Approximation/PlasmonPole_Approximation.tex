@@ -1,0 +1,109 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Plasmon Pole Approximation}
+
+\author{Avinash Rustagi}
+\email{arustag@ncsu.edu}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, NC 27695}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+The objective is to discuss the plasmon pole approximation for the dielectric constant.
+\end{abstract}
+
+\maketitle
+%
+From simple equation of motion approach of electrons in a DC electric field, we know the dielectric constant to be
+\begin{equation}
+\varepsilon(q=0,\omega) = 1-\dfrac{\omega_{p}^2}{\omega^2}
+\end{equation}
+which explains the reflection of light from metals when the frequency of light is less than the plasma frequency $\omega_p$. The inverse dielectric constant can thus be expressed as
+\begin{equation}
+\begin{split}
+\dfrac{1}{\varepsilon(q\rightarrow0,\omega)} &= \dfrac{\omega^2}{(\omega + i \delta)^2-\omega_p^2}\\
+&=1+ \dfrac{\omega_p^2}{(\omega + i \delta)^2-\omega_p^2}
+\end{split} 
+\end{equation}
+where $\delta$ is a infinitesimally small. The above expression has a single pole at the plasma frequency. The plasmon-pole approximation is used to construct the full dielectric function $\varepsilon(q,\omega)$ which replaces the continuum of poles in the Lindhard function by one effective plasmon-pole $\omega_q$. Therefore
+\begin{equation}
+\begin{split}
+\dfrac{1}{\varepsilon(q,\omega)}&=1+ \dfrac{\omega_p^2}{(\omega + i \delta)^2-\omega_q^2}
+\end{split} 
+\end{equation}
+The plasmon-pole $\omega_q$ is set by the sum rules that the dielectric function must satisfy. From the Kramers-Kronig relation ($\varepsilon=\varepsilon' + i \varepsilon''$)
+\begin{equation}
+\varepsilon'(q,\omega) = 1+ \dfrac{2}{\pi} \mathcal{P} \int_0^\infty d\omega' \, \dfrac{\omega' \, \varepsilon''(q,\omega')}{\omega'^2-\omega^2}
+\end{equation}
+In the long-wavelength static limit ($q$-very small and $\omega=0$)
+\begin{equation}
+\varepsilon'(q,\omega=0)-1=\dfrac{\kappa^2}{q^2} =\dfrac{2}{\pi} \lim_{q \rightarrow 0} \int_0^\infty d\omega' \, \dfrac{ \varepsilon''(q,\omega')}{\omega'}
+\end{equation}
+where $\kappa$ is the Thomas-Fermi screening wavevector. Therefore
+\begin{equation}
+\begin{split}
+\varepsilon(q,\omega) &= \dfrac{\omega^2-\omega_q^2}{(\omega+i\delta)^2-(\omega_q^2 - \omega_p^2)} \\
+&=\dfrac{\omega^2-\omega_q^2}{(\omega+i\delta-\Omega_q)(\omega+i\delta+\Omega_q)}
+\end{split}
+\end{equation}
+where $\Omega_q^2=\omega_q^2 - \omega_p^2$. We can read off the imaginary part of the dielectric constant
+\begin{equation}
+\begin{split}
+\varepsilon''(q,\omega) &= \dfrac{\omega^2-\omega_q^2}{2\Omega_q} \textrm{Im} \left[ \dfrac{1}{\omega+i\delta-\Omega_q}- \dfrac{1}{\omega+i\delta+\Omega_q}\right] \\
+&=\dfrac{\omega^2-\omega_q^2}{2\Omega_q} \left[ -\pi \delta(\omega-\Omega_q)+\pi \delta(\omega+\Omega_q)\right]
+\end{split}
+\end{equation}
+This implies
+\begin{equation}
+\begin{split}
+\dfrac{\kappa^2}{q^2}& =\dfrac{2}{\pi} \lim_{q \rightarrow 0}\dfrac{\pi}{2} \int_0^\infty d\omega' \, \dfrac{\omega^2-\omega_q^2}{\Omega_q} \dfrac{\delta(\omega-\Omega_q)}{\omega'} \\
+&=-\dfrac{\Omega_q^2-\omega_q^2}{\Omega_q^2} = \dfrac{\omega_p^2}{\Omega_q^2}
+\end{split}
+\end{equation}
+Hence
+\begin{equation}
+\begin{split}
+&\Omega_q^2 = \omega_p^2 \dfrac{q^2}{\kappa^2} \\
+\Rightarrow \, & \omega_q^2 = \omega_p^2 \left[1+\dfrac{q^2}{\kappa^2} \right]
+\end{split}
+\end{equation}
+Thus within the plasmon-pole approximation, the dielectric function is approximated as 
+\begin{equation}
+\begin{split}
+\dfrac{1}{\varepsilon(q,\omega)}&=1+ \dfrac{\omega_p^2}{(\omega + i \delta)^2-\omega_q^2}
+\end{split} 
+\end{equation}
+Lundquist added a correction to simulate the contribution of pair continuum
+\begin{equation}
+\omega_q^2 = \omega_p^2 \left[1+\dfrac{q^2}{\kappa^2} \right] + \nu_q^2 = \omega_q^2 = \omega_p^2 \left[1+\dfrac{q^2}{\kappa^2} \right] + C q^4
+\end{equation}
+The above expressions are valid for 3D. \\
+
+For 2D:
+\begin{equation}
+ \omega_q^2 = \omega_p^2 \left[1+\dfrac{q}{\kappa} \right] + C q^2
+\end{equation}
+\end{document}

@@ -1,0 +1,141 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Magnus Expansion}
+
+\author{Avinash Rustagi}
+\email{arustag@ncsu.edu}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, NC 27695}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+%
+\textbf{Statement}: Consider a Bloch Hamiltonian with periodic monochromatic perturbation $H(t)$: For time $t>T(\equiv 2\pi/\omega_0)$, the effective Hamiltonian describing the system is
+\begin{equation}
+H_{eff} = H_0 + \dfrac{\left[ H_{-1},H_{1}\right]}{\omega_0} + \mathcal{O}\left( \dfrac{1}{\omega_0^2}\right)
+\end{equation}
+where 
+\begin{equation}
+H(t)=\sum_{m} H_{m} \exp\left( im\omega_0 t\right) \quad H_m = \dfrac{1}{T}\int_0^T dt H(t) \exp\left( -im\omega_0 t\right)
+\end{equation}
+
+\textbf{Proof}:\\
+The time-evolution operator satisfies
+\begin{equation}
+\begin{split}
+i\hbar \dfrac{\partial}{\partial t} U(t,t_0) & = \lambda H(t) U(t,t_0) \\
+\Rightarrow U(t,t_0) & = \hat{T}_t \exp \left(-\dfrac{i}{\hbar} \lambda \int_{t_0}^t dt'  H(t') \right) \equiv  \exp\left[\Omega(t,t_0) \right]\quad  \textrm{: Magnus Solution}\\
+\end{split}
+\end{equation}
+$\lambda$ here is kept for book-keeping purposes useful when expanding the exponent. Defining an anti-Hermitian Hamiltonian 
+\begin{equation}
+\tilde{H}(t) = -\dfrac{i}{\hbar} H(t) \qquad \tilde{H}(t)^\dagger = -\tilde{H}(t)
+\end{equation}
+To proceed further, we will need Baker-Campbell-Hausdorff (BCH) formula
+\begin{equation}
+\exp(x) \exp(y) = \exp\left(x+y+\dfrac{1}{2} [x,y] +\dfrac{1}{12} \left[ x,[x,y]\right] + ... \right)
+\end{equation}
+where $x$ and $y$ are non-commutative operators. Thus we can collect terms upto first order in $x$ in the above expansion
+\begin{equation}
+\exp(x) \exp(y) = \exp\left(x+y+\sum_{k=1}^{\infty}(-1)^k \dfrac{B_k}{k\, !} \left[y,\left[...,[y,x]\right]\right] \bigg\vert_{k-\mathrm{times}}+ \mathcal{O}(x^2) \right)
+\end{equation}
+where
+\[\left[y,\left[...,[y,x]\right]\right] \bigg\vert_{k-\mathrm{times}}= \begin{cases} 
+      [y,x] & k=1 \\
+      \left[ y,[y,x]\right] & k=2 \\
+      \left[ y,\left[y,[y,x]\right]\right] & k=3 \\
+      ...\\
+      ...\\
+      ...
+   \end{cases}
+\]
+The time-evolution operator has the property
+\begin{equation}
+U(t+\delta t,t_0)=U(t+\delta t,t)U(t,t_0) = \exp\left(\lambda \tilde{H}(t) \delta t \right)U(t,t_0)
+\end{equation}
+given $\delta t$ is infinitesimally small time increment. By the definition of Magnus Solution
+\begin{equation}
+U(t+\delta t,t_0) = \exp\left[\Omega(t+\delta t,t_0) \right]
+\end{equation}
+Using the BCH formula for terms upto linear order in $\delta t$
+\begin{equation}
+\exp\left(\lambda \tilde{H}(t) \delta t \right)U(t,t_0) = \exp\left(\Omega (t,t_0)+\lambda \tilde{H}(t) \delta t +\sum_{k=1}^{\infty}(-1)^k \dfrac{B_k}{k\, !} \left[\Omega(t,t_0),\left[...,[\Omega(t,t_0), \lambda \tilde{H}(t) \delta t]\right]\right] \bigg\vert_{k-\mathrm{times}} \right)
+\end{equation}
+Thus upon comparison $U(t+\delta t,t_0)=U(t+\delta t,t)U(t,t_0)$
+\begin{equation}
+\Omega(t+\delta t,t_0) = \Omega (t,t_0)+\lambda \delta t \left[ \tilde{H}(t) + \sum_{k=1}^{\infty}(-1)^k \dfrac{B_k}{k\, !} \left[\Omega(t,t_0),\left[...,[\Omega(t,t_0), \tilde{H}(t) ]\right]\right] \bigg\vert_{k-\mathrm{times}} \right]
+\end{equation}
+which leads to a differential equation in $\Omega (t,t_0)$
+\begin{equation}
+\dfrac{\partial}{\partial t} \Omega (t,t_0) = \lambda \tilde{H}(t) + \lambda \sum_{k=1}^{\infty}(-1)^k \dfrac{B_k}{k\, !} \left[\Omega(t,t_0),\left[...,[\Omega(t,t_0), \tilde{H}(t) ]\right]\right] \bigg\vert_{k-\mathrm{times}} 
+\end{equation}
+Magnus proposed that the exponent can be expanded in a series in parameter $\lambda$
+\begin{equation}
+\Omega(t,t_0)=\sum_{k=1}^\infty \lambda^k \Omega_k (t,t_0) = \lambda^1 \Omega_1 (t,t_0) + \lambda^2 \Omega_2 (t,t_0) + .... 
+\end{equation}
+Substituting this series expansion in the differential equation for $\Omega (t,t_0)$ and comparing terms order by order (in $\lambda$):
+\begin{equation}
+\dfrac{\partial}{\partial t} \Omega_1 (t,t_0) = \tilde{H}(t)  \Rightarrow \Omega_1 (t,t_0)=\int_{t_0}^{t}dt' \, \tilde{H}(t')
+\end{equation}
+\begin{equation}
+\begin{split}
+\dfrac{\partial}{\partial t} \Omega_2 (t,t_0) =  - \dfrac{1}{2} [\Omega_1 (t,t_0), \tilde{H}(t) ] \Rightarrow \Omega_2 (t,t_0)&=-\dfrac{1}{2}\int_{t_0}^{t}dt' \, [\Omega_1 (t',t_0), \tilde{H}(t') ] \\
+&= \dfrac{1}{2} \int_{t_0}^{t}dt_1 \, \int_{t_0}^{t_1}dt_2 \, [ \tilde{H}(t_1) ,\tilde{H}(t_2) ]
+\end{split}
+\end{equation}
+Therefore
+\begin{equation}
+U(t,t_0) = \exp\left( \Omega (t,t_0)\right) \equiv \hat{T}_t \exp \left(\lambda \int_{t_0}^t dt' \, \tilde{H}(t') \right)
+\end{equation}
+\begin{equation}
+U(T,0) = \exp\left( \Omega (T,0)\right) \vert_{\lambda=1} \equiv \exp\left( -\dfrac{i}{\hbar} H_{eff} T \right)
+\end{equation}
+Thus we can read the effective Hamiltonian 
+\begin{equation}
+H_{eff} = \dfrac{1}{T} \int_0^T dt \, H(t) -\dfrac{i}{\hbar} \dfrac{1}{2T} \int_0^T dt_1 \, \int_0^{t_1} dt_2 \, [H(t_1),H(t_2)]
+\end{equation}
+Using
+\begin{equation}
+H(t)=\sum_{m} H_{m} \exp\left( im\omega_0 t\right) \quad H_m = \dfrac{1}{T}\int_0^T dt H(t) \exp\left( -im\omega_0 t\right)
+\end{equation}
+\begin{equation}
+H_0 = \dfrac{1}{T}\int_0^T dt H(t) 
+\end{equation}
+\begin{equation}
+ \dfrac{1}{2T} \int_0^T dt_1 \, \int_0^{t_1} dt_2 \, [H(t_1),H(t_2)] = \sum_{n=1}^\infty \dfrac{1}{i n \omega_0} \left( [H_{-n}, H_n] -\dfrac{1}{2}[H_{0}, H_n]+\dfrac{1}{2}[H_{0}, H_{-n}] \right)
+\end{equation}
+Hence upto first order 
+\begin{equation}
+H_{eff} = H_0 -\dfrac{i}{\hbar} \sum_{n=1}^\infty \dfrac{1}{i n \omega_0} \left( [H_{-n}, H_n] -\dfrac{1}{2}[H_{0}, H_n]+\dfrac{1}{2}[H_{0}, H_{-n}] \right)
+\end{equation}
+The maximum contribution comes from $n=1$
+\begin{equation}
+H_{eff} = H_0 - \dfrac{1}{ \hbar \omega_0} \left( [H_{-1}, H_1] -\dfrac{1}{2}[H_{0}, H_1]+\dfrac{1}{2}[H_{0}, H_{-1}] \right)
+\end{equation}
+
+
+
+\end{document}

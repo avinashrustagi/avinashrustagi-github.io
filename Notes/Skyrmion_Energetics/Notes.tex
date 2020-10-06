@@ -1,0 +1,88 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,xcolor}
+\fboxrule=1pt
+\usepackage{amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usetikzlibrary{fit}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\AR}[1]{\textcolor{red}{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Neel Skyrmion: Energetics}
+
+\author{Avinash Rustagi}
+\email{arustag@purdue.edu}
+%
+%\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+%
+Let us consider a exchange coupled magnetic thin film (thickness $L$) with an out-of-plane uniaxial easy axis, interfacial DMI (caused by a heavy metal substrate), and an externally applied magnetic field along the out-of-plane normal. The energy describing this magnet is
+\begin{equation}
+\begin{split}
+E_\mrm{total} &= E_\mrm{ex} + E_\mrm{uni} + E_\mrm{dmi} + E_\mrm{z}\\
+\end{split}
+\end{equation}
+The magnetization unit vector can be described in terms of angles $\Theta (\vec{r})$ and $\Phi(\vec{r})=\nu \phi + \gamma$ which are functions of in-plane spatial coordinates ($\vec{r}=\{r\cos\phi, r\sin\phi\}$) such that
+\begin{equation}
+\begin{split}
+E_\mrm{z} &= M_s B L \int dS\, [1-m_z] \\
+&= 2\pi M_s B L \int rdr\, [1-\cos\Theta]\\
+E_\mrm{uni} &= M_s K_u L \int dS\, [1-m_z^2] \\
+&= 2\pi M_s K_u L \int rdr\, \sin^2\Theta\\ 
+E_\mrm{ex} &= A L \int dS\, [(\vec{\nabla} m_x)^2+(\vec{\nabla} m_y)^2+(\vec{\nabla} m_z)^2] \\
+&= 2\pi A L \int rdr\, \left[ \left(\dfrac{d\Theta}{dr}\right)^2 + \dfrac{\sin^2\Theta}{r^2}\right]\\ 
+E_\mrm{dmi} &= D_\mrm{dmi} L \int dS\, [m_z \vec{\nabla} \cdot \vec{m}- \vec{m}\cdot \vec{\nabla} m_z] \\
+&= 2\pi D_\mrm{dmi} L \cos\gamma \int rdr\, \left[ \dfrac{d\Theta}{dr} + \dfrac{\sin2\Theta}{2r}\right]\\ 
+\end{split}
+\end{equation}
+where $\nu$ is the vorticity (winding number; set to be 1) and $\gamma$ defines the skyrmion type ($\gamma=0/\pi$- Neel; $\gamma=\pm\pi/2$- Bloch). Defining polarity as
+\begin{equation}
+p = \dfrac{m_z(0)-m_{z}(\infty)}{2}
+\end{equation}
+and considering the situation 
+\begin{itemize}
+\item where $p=1$ meaning magnetization is along +z at the skyrmion core center and along -z outside the skyrmion core, we can see that the angle $\Theta$ increases monotonically as one moves radially outward from the core center implying $d\Theta/dr >0$. On the other hand the integral of $\sin\Theta \cos\Theta$ is very small as the product has opposite signs on either side of the Skyrmion wall. Assuming that the interfacial DMI energy $D_\mrm{dmi}>0$, it can be seen that $\gamma=\pi$ will lower the energy of the system. Thus, we would have a Neel Skyrmion with $\gamma=\pi$.
+\item where $p=-1$ meaning magnetization is along -z at the skyrmion core center and along +z outside the skyrmion core, we can see that the angle $\Theta$ decreases monotonically as one moves radially outward from the core center implying $d\Theta/dr < 0$. On the other hand the integral of $\sin\Theta \cos\Theta$ is very small as the product has opposite signs on either side of the Skyrmion wall. Assuming that the interfacial DMI energy $D_\mrm{dmi}>0$, it can be seen that $\gamma=0$ will lower the energy of the system. Thus, we would have a Neel Skyrmion with $\gamma=0$.
+\end{itemize}
+
+
+\noindent An ansatz for the Neel Skyrmion (of radius $R_s$ and wall width $w_s$) with polarity 1 is
+\begin{equation}
+m_z = \dfrac{\sinh(R_s/w_s)-\sinh(r/w_s)}{\sinh(R_s/w_s)+\sinh(r/w_s)}
+\end{equation}
+equivalent to 
+\begin{equation}
+\Theta = 2 \tan^{-1} \left[ \dfrac{\sinh(R_s/w_s)}{\sinh(r/w_s)}\right]
+\end{equation}
+Following which
+\begin{equation}
+\begin{split}
+m_x &= \sqrt{1-m_z^2} \cos[\nu \phi + \gamma] \\
+m_y &= \sqrt{1-m_z^2} \sin[\nu \phi + \gamma] \\
+\end{split}
+\end{equation}
+Note that the ansatz can be simply generalized for Bloch skyrmions (However, we might need free energy terms corresponding to Bulk DMI and dipole-dipole interaction for understanding the stability of the soliton).
+%
+\end{document}

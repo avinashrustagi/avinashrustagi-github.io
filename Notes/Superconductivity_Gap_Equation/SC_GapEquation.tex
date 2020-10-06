@@ -1,0 +1,95 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Superconductivity Gap Equation}
+
+\author{Avinash Rustagi}
+\email{arustag@ncsu.edu}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, NC 27695}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+The objective is to show that the gap equation decouples into different channels.
+\end{abstract}
+
+\maketitle
+%
+The generalized superconductivity gap equation for a given pairing potential $V({\bm k},{\bm p})$,
+\begin{equation}
+\Delta({\bm k}) = -\sum_{{\bm p}} V({\bm k},{\bm p}) \langle c_{-{\bm p} \downarrow} c_{{\bm p} \uparrow} \rangle
+\end{equation}
+Superconductivity arises from Fermi surface instability to Cooper pair formation, thus it is fair to restrict the electrons in the Gap equation to Fermi surface (i.e. $k=k_F$ and $p=k_F$). We can express the Gap equation in terms of the anomalous Green function $F({\bm p}) =  \langle c_{-{\bm p} \downarrow} c_{{\bm p} \uparrow} \rangle$
+\begin{equation}
+\Delta({\bm k}) = -\sum_{{\bm p}} V({\bm k},{\bm p}) F({\bm p})
+\end{equation}
+Setting $k=k_F$ and $p=k_F$, the gap equation has only angles ($\hat{k}$ and $\hat{p}$)
+\begin{equation}
+\Delta(\hat{k}) = -\sum_{\hat{p}} V(\hat{k},\hat{p}) F({\hat{ p}}) 
+\end{equation}
+Assuming azimuthal symmetry, we can expand the functions $\Delta(\hat{k})$ and $F({\hat{ p}})$ in spherical harmonics
+\begin{equation}
+\begin{split}
+\Delta(\hat{k}) &= \sum_{lm} \Delta_{l} Y_{lm}(\hat{k}) \\
+F(\hat{p}) &= \sum_{l'm'} F_{l'} Y_{l'm'}(\hat{p}) \\
+\end{split}
+\end{equation}
+We can use the addition theorem of spherical harmonics to expand the pairing potential
+\begin{equation}
+V({\bm k},{\bm p}) = \sum_{lm} V_{l} Y_{lm}(\hat{k}) Y_{lm}(\hat{p})^*
+\end{equation}
+Therefore the gap equation in the $l$-channel can be estimated
+\begin{equation}
+\begin{split}
+\Delta_{l} &= \int \dfrac{d\Omega_k}{4\pi} \Delta(\hat{k})  Y_{lm}(\hat{k})^* \\
+ &= -\int \dfrac{d\Omega_p}{4\pi} \int \dfrac{d\Omega_k}{4\pi} V(\hat{k},\hat{p}) F({\hat{ p}}) Y_{lm}(\hat{k})^* \\
+  &= -\int \dfrac{d\Omega_p}{4\pi} \int \dfrac{d\Omega_k}{4\pi} \sum_{l'm'} V_{l'} Y_{l'm'}(\hat{k}) Y_{l'm'}(\hat{p})^* \sum_{l''m''} F_{l''} Y_{l''m''}(\hat{p})  Y_{lm}(\hat{k})^* \\
+\end{split}
+\end{equation}
+Using the orthogonality of spherical harmonics
+\begin{equation}
+\int \dfrac{d\Omega_p}{4\pi} Y_{lm}(\hat{p})^* Y_{l'm'}(\hat{p}) = \delta_{l,l'} \delta_{m,m'}
+\end{equation}
+\begin{equation}
+\begin{split}
+\Delta_{l} &= - \sum_{l'm'} V_{l'}  \sum_{l''m''} F_{l''} \delta_{l,l'} \delta_{m,m'}\delta_{l',l''} \delta_{m',m''}\\
+\end{split}
+\end{equation}
+which indicates that the different channels decouple
+\begin{equation}
+\Delta_{l} = - V_{l} \,  F_{l}
+\end{equation}
+However, we note that we had set all the electron momenta to be at the Fermi surface. In reality, they can have any magnitude within the Debye energy of the Fermi surface,
+\begin{equation}
+\Delta_{l} = - \int_0^{\hbar \omega_D} d\xi \, N(0) V_{l} \,  F_{l}
+\end{equation}
+where
+\begin{equation}
+F_l = \dfrac{\Delta_l}{\sqrt{\Delta_l^2 + \xi^2}} \qquad \xi=\varepsilon-E_F
+\end{equation}
+\begin{equation}
+\Delta_l \approx 2 \hbar \omega_D e^{-1/N(0)V_l}
+\end{equation}
+\end{document}

@@ -1,0 +1,73 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Mermin Wagner Hohenberg Theorem}
+
+\author{Avinash Rustagi}
+\email{arustag@ncsu.edu}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, NC 27695}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+Discuss the Mermin Wagner Hohenberg Theorem
+\end{abstract}
+
+\maketitle
+%
+There is a celebrated theorem in equilibrium statistical mechanics, the Mermin-Wagner-Hohenberg-Coleman theorem, that essentially tells us that a continuous symmetry cannot be broken spontaneously at any finite temperature in dimensions two or lower. This is because the goldstone modes generated upon breaking breaking a continuous symmetry have strong fluctuations in d=1,2 leading to the symmetry being restored at long distances (for T$>$0 ).\\
+
+Goldstone Theorem: Spontaneously breaking a continuous symmetry implies the appearance of a massless mode ($\omega = ck$) in the excitation spectrum of the system. \\
+
+The proof is somewhat involved, thus we consider an alternate physical argument. The theorem states that there cannot exist a long range order in 2D at any finite temperature. Consider a magnetic system where the finite temperature introduces thermal fluctuations which are divergent and destroy ordering in dimensions two or lower. \\
+
+Given the reduction in magnetization at finite temperature $\Delta M (T)$, the magnetization at any temperature is
+\begin{equation}
+M(T)=M(0)-\Delta M (T)
+\end{equation}
+From statistical mechanics, we know that the finite temperature reduction in magnetization will depend on the density of state $N(E)$, occupation of the excitation mode, 
+\begin{equation}
+\Delta M (T) \sim \int_0^\infty dE \, N(E) \dfrac{1}{\exp(E/k_BT)-1}
+\end{equation}
+For a general dispersion $E\sim k^n$ in d-dimension, the density of states per unit volume $N(E)$
+\begin{equation}
+N(E)dE = \dfrac{d^d k}{(2\pi)^d} = \dfrac{k^{d-1}}{(2\pi)^d} dk
+\end{equation}
+\begin{equation}
+N(E) = \dfrac{k^{d-1}}{(2\pi)^d} \dfrac{dk}{dE} \sim k^{d-n} \sim E^{(d-n)/n}
+\end{equation}
+The dispersion of spin waves in Ferromagnets $\sim k^2$. Thus in 2D the density of states is a constant.
+\begin{equation}
+\Delta M (T) \sim \int_0^\infty dE \,  \dfrac{1}{\exp(E/k_BT)-1} \sim \int_0^\infty dx \,  \dfrac{1}{\exp(x)-1}
+\end{equation}
+The integral clearly diverges at small x in a logarithmic manner. This means that the reduction in magnetization $\Delta M (T)$ diverges at finite temperature and causes a breakdown of magnetic order. This is due to the fact the finite temperature spin waves are infinitely easy to excite in 2D at finite temperature.\\
+
+\subsection{Effect of Anisotropy}
+NOTE: The above argument assumes isotropic interactions. If there is some anisotropy in the system (say an easy axis), the spin wave dispersion becomes gapped i.e. $E \sim A + B k^2$. In this case
+\begin{equation}
+\Delta M (T) \sim \int_A^\infty dE \,  \dfrac{1}{\exp(E/k_BT)-1} \sim \int_a^\infty dx \,  \dfrac{1}{\exp(x)-1}
+\end{equation}
+which does not diverge and thus magnetic order is stabilized by anisotropy.
+\end{document}

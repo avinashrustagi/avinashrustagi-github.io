@@ -1,0 +1,133 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+\newcommand{\bk}{{\bm k}}
+\newcommand{\bkz}{{\bm k_0}}
+\newcommand{\br}{{\bm r}}
+\newcommand{\bR}{{\bm R}}
+\newcommand{\op}{\hat{\bm p}}
+\newcommand{\bp}{{\bm p}}
+\newcommand{\bn}{{\bm \nabla}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Bandstructure: k.p Theory}
+
+\author{Avinash Rustagi}
+\email{arustag@ncsu.edu}
+\affiliation{Department of Physics, North Carolina State University, Raleigh, NC 27695}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+$\bk \cdot \bp$ theory is a perturbation based scheme of calculating the eigenvalues and eigenvectors given their knowledge at specific point in the Brillouin zone (BZ). It is particularly useful in estimating the effective masses of bands by perturbatively calculating the energy dispersion about the known BZ point.\\
+
+The momentum operator in quantum mechanics is
+\begin{equation}
+\op = \dfrac{\hbar}{i} \bn
+\end{equation}
+The wavefunctions are of the Bloch type for a periodic crystal
+\begin{equation}
+\Psi_{n,\bk}(\br) = e^{i\bk\cdot\br} u_{n,\bk}(\br)
+\end{equation}
+where the Bloch function $u_{n,\bk}(\br +\bR)=u_{n,\bk}(\br)$ is periodic. Therefore
+\begin{equation}
+\op \Psi_{n,\bk}(\br)  = e^{i \bk \cdot \br} \hbar \left[ \dfrac{1}{i} \bn + \bk \right] u_{n,\bk}(\br)
+\end{equation}
+which can be substituted in the Schrodinger equation
+\begin{equation}
+\begin{split}
+&\left[ \dfrac{\op^2}{2 m} + V(\br) \right] \Psi_{n,\bk}(\br) = E_{n,\bk} \Psi_{n,\bk}(\br) \\
+ e^{i \bk\cdot\br} &\left[\dfrac{\hbar^2}{2m}\left( \dfrac{1}{i} \bn+ \bk\right)^2 + V(\br) \right] u_{n,\bk}(\br) = E_{n,\bk} e^{i \bk\cdot\br} u_{n,\bk}(\br) \\
+ &\left[\dfrac{\hbar^2}{2m}\left( \dfrac{1}{i} \bn+ \bk\right)^2 + V(\br) \right] u_{n,\bk}(\br) = E_{n,\bk} u_{n,\bk}(\br)
+\end{split}
+\end{equation}
+Thus $u_{n,\bk}(\br)$ satisfies an equation of the form
+\begin{equation}
+\begin{split}
+&H_{\bk} u_{n,\bk}(\br) = E_{n,\bk}u_{n,\bk}(\br) \\
+\text{where} \quad & H_{\bk} = \dfrac{\hbar^2}{2m}\left( \dfrac{1}{i} \bn+ \bk\right)^2 + V(\br) 
+\end{split}
+\end{equation}
+Say we know the eigenspectrum at a point $\bkz$: $H_{\bkz} u_{n,\bkz}(\br) = E_{n,\bkz}u_{n,\bkz}(\br)$ where
+\begin{equation}
+\begin{split}
+& H_{\bkz} = \dfrac{\hbar^2}{2m}\left( \dfrac{1}{i} \bn+ \bkz\right)^2 + V(\br) 
+\end{split}
+\end{equation}
+and we want to know the eigenspectrum at a nearby point $\bk$
+\begin{equation}
+\begin{split}
+H_{\bk} &= \dfrac{\hbar^2}{2m}\left( \dfrac{1}{i} \bn+ \bk\right)^2 + V(\br)  \\
+&=\dfrac{\hbar^2}{2m}\left( \dfrac{1}{i} \bn+ \bkz + (\bk-\bkz)\right)^2 + V(\br) \\
+&= H_{\bkz} + \dfrac{\hbar^2}{m}\left( \dfrac{1}{i} \bn+ \bkz \right) \cdot  (\bk-\bkz) + \dfrac{\hbar^2  (\bk-\bkz)^2}{2m} \\
+&=H_\bkz + \bar{V}
+\end{split}
+\end{equation}
+where the perturbation term is
+\begin{equation}
+ \bar{V} =  \dfrac{\hbar^2}{m}\left( \dfrac{1}{i} \bn+ \bkz \right) \cdot  (\bk-\bkz) + \dfrac{\hbar^2  (\bk-\bkz)^2}{2m} 
+\end{equation}
+Given the perturbation term, we can evaluate the correction in energy to second order in perturbation theory assuming non-degenerate states
+\begin{equation}
+E^{(2)}_\alpha = E^{(0)}_\alpha + \bar{V}_{\alpha \alpha} + \sum_{\beta \neq \alpha} \dfrac{ \vert \bar{V}_{\alpha \beta} \vert^2}{E^{(0)}_\alpha - E^{(0)}_\beta}
+\end{equation}
+On the other hand, we can Taylor expand $E_{n,\bk}$ about $\bkz$,
+\begin{equation}
+E_{n,\bk} \approx E_{n,\bkz} + \sum_{i} \dfrac{\partial E_{n,\bkz}}{\partial k_{0,i}} (\bk-\bkz)_i + \dfrac{1}{2}\sum_{i,j} \dfrac{\partial^2 E_{n,\bkz}}{\partial k_{0,i}\partial k_{0,j}} (\bk-\bkz)_i  (\bk-\bkz)_j
+\end{equation}
+from which we can read off the effective mass tensor
+\begin{equation}
+m_{ij}^{-1} = \dfrac{\partial^2 E_{n,\bkz}}{\partial k_{0,i}\partial k_{0,j}}
+\end{equation}
+Comparing the two energy expansions (Perturbation and Taylor series) and comparing second order terms
+\begin{equation}
+\dfrac{1}{2}\sum_{i,j} \dfrac{\partial^2 E_{n,\bkz}}{\partial k_{0,i}\partial k_{0,j}} (\bk-\bkz)_i  (\bk-\bkz)_j =  \dfrac{\hbar^2  (\bk-\bkz)^2}{2m} + \sum_{n' \neq n} \dfrac{ \vert \dfrac{\hbar^2}{m} \langle n \bkz\vert ( -i \bn+ \bkz ) \cdot  (\bk-\bkz) \vert n' \bkz \rangle \vert^2}{E^{(0)}_{n,\bkz} - E^{(0)}_{n',\bkz}}  
+\end{equation}
+The above equation is used to read of the effective mass tensor.
+\begin{equation}
+\begin{split}
+\dfrac{1}{2}\sum_{i,j} \dfrac{\partial^2 E_{n,\bkz}}{\partial k_{0,i}\partial k_{0,j}} (\bk-\bkz)_i  (\bk-\bkz)_j &=  \dfrac{\hbar^2  (\bk-\bkz)^2}{2m} + \sum_{n' \neq n} \dfrac{ \vert \dfrac{\hbar^2}{m} \langle n \bkz\vert ( -i \bn) \cdot  (\bk-\bkz) \vert n' \bkz \rangle \vert^2}{E^{(0)}_{n,\bkz} - E^{(0)}_{n',\bkz}}  \\
+&=  \dfrac{\hbar^2  (\bk-\bkz)^2}{2m} + \sum_{n' \neq n} \dfrac{ \vert \dfrac{\hbar}{m} \langle n \bkz\vert ( \hbar \bn/i) \cdot  (\bk-\bkz) \vert n' \bkz \rangle \vert^2}{E^{(0)}_{n,\bkz} - E^{(0)}_{n',\bkz}}  \\
+&=  \dfrac{\hbar^2  (\bk-\bkz)^2}{2m} + \sum_{n' \neq n} \dfrac{ \vert \dfrac{\hbar}{m} \langle n \bkz\vert \op\cdot  (\bk-\bkz) \vert n' \bkz \rangle \vert^2}{E^{(0)}_{n,\bkz} - E^{(0)}_{n',\bkz}}  \\
+\end{split}
+\end{equation}
+where we have used the orthogonality of the wavefunctions to set $\langle n \bkz\vert \bkz \cdot  (\bk-\bkz) \vert n' \bkz \rangle = \delta_{n,n'}$ which is 0 since $n\neq n'$. \\
+
+As for the wavefunction
+\begin{equation}
+\vert u_{n,\bk} \rangle = \vert u_{n,\bkz} \rangle + \dfrac{\hbar}{m} \sum_{p \neq n} \dfrac{\langle  u_{p,\bkz} \vert\op\cdot(\bk-\bkz) \vert  u_{n,\bkz}\rangle }{E_{n,\bkz}-E_{p,\bkz}} \vert u_{p,\bkz} \rangle
+\end{equation}
+Considering the simple case of two bands - conduction and valence, and assuming spherical symmetry
+\begin{equation}
+\dfrac{1}{m^*} = \dfrac{1}{m} + \dfrac{2}{m} \dfrac{\vert \langle \op \rangle_{cv}\vert^2}{E_{c0}-E_{v0}} = \dfrac{1}{m} + \dfrac{2}{m} \dfrac{\vert \langle \op \rangle_{cv}\vert^2}{E_g}
+\end{equation}
+The optical matrix element $\langle \op \rangle_{cv}$ is an input read from experiments as it shows up in absorption coupling the transition between valence and conduction bands. And the wavefunctions
+\begin{equation}
+\begin{split}
+\vert u_{c,\bk} \rangle &= \vert u_{c,\bkz} \rangle + \dfrac{\hbar}{m}  \dfrac{\langle  u_{v,\bkz} \vert\op\cdot(\bk-\bkz) \vert  u_{c,\bkz}\rangle }{E_{c,\bkz}-E_{v,\bkz}} \vert u_{v,\bkz} \rangle \\
+\vert u_{v,\bk} \rangle &= \vert u_{v,\bkz} \rangle + \dfrac{\hbar}{m}  \dfrac{\langle  u_{c,\bkz} \vert\op\cdot(\bk-\bkz) \vert  u_{v,\bkz}\rangle }{E_{v,\bkz}-E_{c,\bkz}} \vert u_{c,\bkz} \rangle
+\end{split}
+\end{equation}
+
+\end{document}

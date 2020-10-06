@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#nav li {
+    float: left;
+}
+
+#nav li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size:20px;
+}
+
+#nav li a:hover, .dropdown:hover .dropbtn {
+    background-color: blue;
+}
+
+#nav li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 20px 26px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+a:hover:not(.active) {
+    background-color: white;
+}
+
+.active {
+background-color:blue;
+}
+
+li{
+    margin: 10px 0;
+    text-align: justify;
+}
+
+.col-1-4{
+  width:50%;
+  float:left;
+  margin: 10px 0;
+}
+
+div.img {
+    border: 1px solid #ccc;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 20px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 10px 10px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+</head>
+<body>
+<ul id="nav">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="Education.html">Education</a></li>
+  <li><a href="Research.html">Research</a></li>
+  <li><a href="Publications.html">Publications</a></li>
+  <li><a href="Notes.html">Notes</a></li>
+  <li><a href="UsefulLinks.html">Useful Links</a></li>
+  <li><a class="active" href="Gallery.html">Gallery</a></li>
+</ul>
+
+
+<h2><u> Photographs</u> </h2>
+
+
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/AntelopeCanyon.JPG">
+      <img src="Photography/AntelopeCanyon.JPG" alt="Antelope Canyon" width="300" height="200">
+    </a>
+    <div class="desc">Antelope Canyon</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/Arch through the Window at Sunrise.JPG">
+      <img src="Photography/Arch through the Window at Sunrise.JPG" alt="Arches" width="300" height="200">
+    </a>
+    <div class="desc">Turrett Arch, Windows Section, Arches National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/Bryce Canyon.JPG">
+      <img src="Photography/Bryce Canyon.JPG" alt="Bryce Canyon" width="300" height="200">
+    </a>
+    <div class="desc">Bryce Canyon National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/Going to Sun Road-Glacier National Park.JPG">
+      <img src="Photography/Going to Sun Road-Glacier National Park.JPG" alt="Going to the Sun road" width="300" height="200">
+    </a>
+    <div class="desc">Going to the Sun Road, Glacier National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/Grand Prismatic Spring-Yellowstone.JPG">
+      <img src="Photography/Grand Prismatic Spring-Yellowstone.JPG" alt="Grand Prismatic Spring" width="300" height="200">
+    </a>
+    <div class="desc">Grand Prismatic Spring, Yellowstone National Park</div>
+  </div>
+</div>
+
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/Grand Teton.JPG">
+      <img src="Photography/Grand Teton.JPG" alt="Grand Teton" width="300" height="200">
+    </a>
+    <div class="desc">Grand Teton National Park</div>
+  </div>
+</div>
+
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/Grinnell Lake-Glacier.JPG">
+      <img src="Photography/Grinnell Lake-Glacier.JPG" alt="Grinnell Lake" width="300" height="200">
+    </a>
+    <div class="desc">Grinnell Lake, Glacier National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/Hidden Lake Trail-Glacier.JPG">
+      <img src="Photography/Hidden Lake Trail-Glacier.JPG" alt="Hidden Lake Trail" width="300" height="200">
+    </a>
+    <div class="desc">Hidden Lake Trail, Glacier National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="img">
+    <a target="_blank" href="Photography/Hidden Lake-Glacier.JPG">
+      <img src="Photography/Hidden Lake-Glacier.JPG" alt="Hidden Lake" width="300" height="200">
+    </a>
+    <div class="desc">Hidden Lake, Glacier National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Lake Mcdonald-Glacier.JPG">
+      <img src="Photography/Lake Mcdonald-Glacier.JPG" alt="Lake Mcdonald" width="300" height="200">
+    </a>
+    <div class="desc">Lake Mcdonald, Glacier National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Mesmerising Sunrise at Yellowstone Lake.JPG">
+      <img src="Photography/Mesmerising Sunrise at Yellowstone Lake.JPG" alt="Yellowstone Lake" width="300" height="200">
+    </a>
+    <div class="desc">Yellowstone Lake, Yellowstone National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Mount Rainer.JPG">
+      <img src="Photography/Mount Rainer.JPG" alt="Mount Rainer" width="300" height="200">
+    </a>
+    <div class="desc">Mount Rainer National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Morning Glory Pool-Yellowstone.JPG">
+      <img src="Photography/Morning Glory Pool-Yellowstone.JPG" alt="Morning Glory Pool-Yellowstone" width="300" height="200">
+    </a>
+    <div class="desc">Morning Glory Pool, Yellowstone National Park</div>
+  </div>
+</div>
+
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Rainy Lake-North Cascades.JPG">
+      <img src="Photography/Rainy Lake-North Cascades.JPG" alt="Rainy Lake-North Cascades" width="300" height="200">
+    </a>
+    <div class="desc">Rainy Lake, North Cascades National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Running Eagle Falls-Glacier.JPG">
+      <img src="Photography/Running Eagle Falls-Glacier.JPG" alt="Running Eagle Falls-Glacier" width="300" height="200">
+    </a>
+    <div class="desc">Running Eagle Falls, Glacier National Park</div>
+  </div>
+</div>
+
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Snow and Frozen Lake-Mount Rainer.JPG">
+      <img src="Photography/Snow and Frozen Lake-Mount Rainer.JPG" alt="Snow and Frozen Lake-Mount Rainer" width="300" height="200">
+    </a>
+    <div class="desc">Snow and Frozen Lake, Mount Rainer National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/St. Mary's Lake-Glacier.JPG">
+      <img src="Photography/St. Mary's Lake-Glacier.JPG" alt="SSt. Mary's Lake-Glacier" width="300" height="200">
+    </a>
+    <div class="desc">St. Mary's Lake, Glacier National Park</div>
+  </div>
+</div>
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Weeping Wall-Glacier National Park.JPG">
+      <img src="Photography/Weeping Wall-Glacier National Park.JPG" alt="Weeping Wall-Glacier National Park" width="300" height="200">
+    </a>
+    <div class="desc">Weeping Wall, Glacier National Park</div>
+  </div>
+</div>
+
+
+<div class="responsive">
+ <div class="img">
+    <a target="_blank" href="Photography/Yellowstone_one.JPG">
+      <img src="Photography/Yellowstone_one.JPG" alt="Hayden Valley, Yellowstone National Park" width="300" height="200">
+    </a>
+    <div class="desc">Hayden Valley, Yellowstone National Park</div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
+

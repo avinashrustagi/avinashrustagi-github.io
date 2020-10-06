@@ -1,0 +1,106 @@
+\documentclass[aps,prb,onecolumn,notitlepage,showpacs,floatfix,superscriptaddress]{revtex4-1}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{soul}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\usepackage{environ}
+
+\NewEnviron{eqnsplit}{%
+\begin{equation}
+\begin{split}
+  \BODY
+\end{split}
+\end{equation}
+}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\ang}{\mathrm{\AA}}
+\newcommand{\cgr}{C^{>}_{AB}}
+\newcommand{\clr}{C^{<}_{AB}}
+
+\bibliographystyle{apsrev4-1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\title{Fluctuation-Dissipation Theorem}
+
+\author{Avinash Rustagi}
+\email{arustag@purdue.edu}
+%
+\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+%
+Fluctuation-Dissipation Theorem is an important theorem in statistical mechanics and condensed matter physics that relates the fluctuations in a system to the dissipation in the same. The point of emphasis is that the mechanisms causing fluctuations in the system are the same ones that cause dissipation. For example, a Brownian particle in a fluid has fluctuations in velocity that are caused by particles in the fluid that transfer momenta via collisions. Moreover, it is the same collisions with the particles of fluid that cause dissipation of a moving Brownian particle in the fluid.\\
+
+A measure of fluctuations in a system is the correlation function of the observable (e.g. velocity of Brownian particle) which measures how correlated the observable is at a later time. On the other hand, the imaginary part of the susceptibility is a measure of the dissipation in the system. Fluctuation-Dissipation Theorem relates the two.\\
+
+Let us consider the correlation function of two quantum mechanical operators $A$ and $B$ of a system governed by the Hamiltonian $H$ with eigenbasis \{$E_n$, $\vert n \rangle$\} using natural units $\hbar=1$ :
+\begin{equation}
+\begin{split}
+\cgr (\omega) &= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \langle A(t) B(0) \rangle \\
+&= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \langle e^{i H t} A e^{i H t} B \rangle \\
+&= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \, \mrm{Tr} \left[ e^{-\beta H} e^{i H t} A e^{i H t} B \right] \\
+&= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \, \sum_{n,m} \langle n \vert  e^{-\beta H} e^{i H t} A e^{i H t} \vert m \rangle \langle m \vert  B \vert n \rangle \\
+&= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \, \sum_{n,m} e^{-\beta E_n } e^{i (E_n - E_m) t} \langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle \\
+&=  \sum_{n,m} 2 \pi \delta(\omega + E_n - E_m) e^{-\beta E_n } \langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle \\
+\end{split}
+\end{equation}
+As for the (retarded i.e. causal) susceptibility,
+\begin{equation}
+\begin{split}
+\chi_{AB} (\omega) &=  \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} i \Theta(t) \langle [A(t),B(0)] \rangle \\
+&=  i \int_{0}^{\infty} \, dt \, e^{i \omega t}  \langle A(t) B(0) - B(0) A(t) \rangle \\
+&=  i \int_{0}^{\infty} \, dt \, e^{i \omega t} \sum_{n,m} e^{-\beta E_n } e^{i (E_n - E_m) t}  \langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle - i \int_{0}^{\infty} \, dt \, e^{i \omega t} \sum_{n,m} e^{-\beta E_n } e^{i (E_m - E_n) t}  \langle n \vert  B \vert m \rangle \langle m \vert  A \vert n \rangle\\
+&=  - \sum_{n,m} \dfrac{1}{\omega + E_n -E_m +i 0^+} e^{-\beta E_n } \langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle + \sum_{n,m} \dfrac{1}{\omega + E_m -E_n + i 0^+}e^{-\beta E_n }  \langle n \vert  B \vert m \rangle \langle m \vert  A \vert n \rangle\\
+&=  - \sum_{n,m} \dfrac{1}{\omega + E_n -E_m +i 0^+} e^{-\beta E_n } \langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle + \sum_{n,m} \dfrac{1}{\omega + E_n -E_m + i 0^+}e^{-\beta E_m }  \langle m \vert  B \vert n \rangle \langle n \vert  A \vert m \rangle\\
+&=  - \sum_{n,m} \dfrac{1}{\omega + E_n -E_m +i 0^+} \left[ e^{-\beta E_n }-e^{-\beta E_m } \right]\langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle \\
+\end{split}
+\end{equation}
+Therefore the imaginary part of the (retarded i.e. causal) susceptibility $\chi''_{AB} (\omega) $ is
+\begin{equation}
+\begin{split}
+\chi''_{AB} (\omega) &=  \sum_{n,m} \pi \delta(\omega + E_n -E_m ) \left[ e^{-\beta E_n }-e^{-\beta E_m } \right]\langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle \\
+&=  \sum_{n,m} \pi \delta(\omega + E_n -E_m ) \left[ e^{-\beta E_n }-e^{-\beta (E_n+\omega) } \right]\langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle \\
+&=  \sum_{n,m} \pi \delta(\omega + E_n -E_m ) e^{-\beta E_n } \left[ 1-e^{-\beta \omega } \right]\langle n \vert  A \vert m \rangle \langle m \vert  B \vert n \rangle \\
+&= \dfrac{ 1-e^{-\beta \omega }}{2} \cgr (\omega)
+\end{split}
+\end{equation}
+We note that there is another way one could have defined the correlation function $\clr$ 
+\begin{equation}
+\begin{split}
+\clr (\omega) &= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \langle  B(0) A(t) \rangle \\
+&= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \, \sum_{n,m} \langle n \vert  e^{-\beta H} B \vert m \rangle \langle m \vert   e^{i H t} A e^{i H t}  \vert n \rangle \\
+&= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \, \sum_{n,m} e^{-\beta E_n } e^{i (E_m - E_n) t} \langle n \vert  B \vert m \rangle \langle m \vert  A \vert n \rangle \\
+&=  \sum_{n,m} 2 \pi \, \delta(\omega + E_m - E_n) e^{-\beta E_n } \langle n \vert  B \vert m \rangle \langle m \vert  A \vert n \rangle \\
+&=  \sum_{n,m} 2 \pi \, \delta(\omega + E_n - E_m) e^{-\beta E_m } \langle m \vert  B \vert n \rangle \langle n \vert  A \vert m \rangle \\
+&=  \sum_{n,m} 2 \pi \, \delta(\omega + E_n - E_m) e^{-\beta (E_n+\omega) } \langle m \vert  B \vert n \rangle \langle n \vert  A \vert m \rangle \\
+&=  e^{-\beta \omega } \cgr (\omega)\\
+\end{split}
+\end{equation}
+To circumvent the definition of correlation function, a symmetrical definition is often used
+\begin{equation}
+\begin{split}
+C_{AB} (\omega) &= \int_{-\infty}^{\infty} \, dt \, e^{i \omega t} \langle A(t) B(0)+ B(0) A(t) \rangle \\
+&= \cgr (\omega)+ \clr (\omega) \\
+&= \left[ 1+ e^{-\beta \omega}\right] \cgr(\omega) \\
+&= 2 \dfrac{1+ e^{-\beta \omega}}{1- e^{-\beta \omega}} \chi''_{AB} (\omega) \\
+&= 2 \, \coth \left[ \dfrac{\beta \omega}{2} \right]  \, \chi''_{AB} (\omega) 
+\end{split}
+\end{equation} 
+The above relation clearly relates the fluctuations in a system to the dissipation in the same system.
+
+\section*{Mathematical Relations}
+\begin{equation}
+\int_{-\infty}^{\infty} dt \, e^{i \Omega t} = 2\pi\, \delta(\Omega)
+\end{equation}
+\begin{equation}
+\int_{0}^{\infty} dt \, e^{i \Omega t} = \lim_{\eta \rightarrow 0} \int_{0}^{\infty} dt \, e^{i \Omega t}  e^{-\eta t} = - \lim_{\eta \rightarrow 0} \dfrac{1}{\Omega + i \eta}
+\end{equation}
+\begin{equation}
+\lim_{\eta \rightarrow 0} \dfrac{1}{\Omega + i \eta} = \mathcal{P} \left( \dfrac{1}{\Omega} \right) - i \pi \delta(\Omega)
+\end{equation}
+\end{document}
