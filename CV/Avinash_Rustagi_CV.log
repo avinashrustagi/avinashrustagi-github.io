@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  31 JAN 2022 20:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  23 FEB 2022 12:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,34 +415,34 @@ Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¡ in font cmr12!
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 151.
+Package hyperref Warning: Suppressing link with empty target on input line 149.
 
 
 
-Overfull \hbox (8.26332pt too wide) in paragraph at lines 151--152
+Overfull \hbox (8.26332pt too wide) in paragraph at lines 149--150
 []\OT1/cmr/m/n/12 Mohammad Mush-fiqur Rah-man, \OT1/cmr/bx/n/12 Avinash Rustagi
 \OT1/cmr/m/n/12 , Yaroslav Tserkovnyak, and Pramey
  []
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 153.
+Package hyperref Warning: Suppressing link with empty target on input line 151.
 
 
-[3] [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
- [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
+[3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 224.
+ [4] [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 224.
  (./Avinash_Rustagi_CV.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 226.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 226.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 224.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 224.
 Package rerunfilecheck Info: File `Avinash_Rustagi_CV.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 226.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 224.
  ) 
 Here is how much of TeX's memory you used:
  6397 strings out of 493117
  93377 string characters out of 6135433
- 188691 words of memory out of 5000000
+ 189691 words of memory out of 5000000
  9794 multiletter control sequences out of 15000+600000
  8180 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -454,7 +454,7 @@ sr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
 local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/lo
 cal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Avinash_Rustagi_CV.pdf (5 pages, 98579 bytes).
+Output written on Avinash_Rustagi_CV.pdf (5 pages, 98409 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  75 compressed objects within 1 object stream
